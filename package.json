@@ -5,13 +5,14 @@
   "author": "abhishek97",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node src/index.js"
   },
   "dependencies": {
     "amqp": "^0.2.7",
     "handlebars-pdf": "^1.0.1",
     "minio": "^7.0.0",
     "needle": "^2.2.2",
+    "phantomjs-prebuilt": "^2.1.16",
     "raven": "^2.6.4",
     "uuid": "^3.3.2"
   }

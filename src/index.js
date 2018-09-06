@@ -1,10 +1,12 @@
 const amqp = require('amqp')
 const PDF = require('handlebars-pdf')
 const v4 = require('uuid/v4')
+const p = require('path')
 const needle = require('needle')
-const { uploadToMinio, linkForKey } = require('./minio')
 const fs = require('fs')
 
+const Raven = require('./raven')
+const { uploadToMinio, linkForKey } = require('./minio')
 const config = require('./config.json')
 
 const connection = amqp.createConnection({
@@ -20,7 +22,7 @@ connection.on('error', function (e) {
 
 const queuePromise = new Promise((resolve, reject) => {
   connection.on('ready', function () {
-    connection.queue('amoeba-certificate', q => {
+    connection.queue('amoeba-certificate', {durable: true, autoDelete: false}, q => {
       resolve(q)
     })
   })
@@ -34,16 +36,19 @@ queuePromise.then(q => {
   q.subscribe(async function ({ data, callback }) {
     try {
       // 1. generate html
-      const path = './certification/' + v4() + ".pdf"
+      const path = p.join(__dirname, './certification/' + v4() + ".pdf")
+      const templatePath = p.join(__dirname, './templates/' + data.template + '.hbs')
       const document = {
-        template: fs.readFileSync('./templates/' + data.template + '.hbs').toString('utf-8'),
+        template: fs.readFileSync(templatePath).toString('utf-8'),
         context: {
           data
         },
         path
       }
 
-      await PDF.create(document)
+      await PDF.create(document, {
+        phantomPath: p.join(__dirname, '../node_modules/phantomjs-prebuilt/bin/phantomjs')
+      })
 
       // 2. Upload to minio
       const destKeyName = `${data.name.replace(' ', '')}_${v4()}`
