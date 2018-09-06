@@ -1,5 +1,5 @@
 const Raven = require('raven'),
-  config = require('./config.json')
+  config = require('../config.json')
 
 
   Raven.config(config.sentryDSN, {

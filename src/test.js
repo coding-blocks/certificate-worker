@@ -1,7 +1,7 @@
 // An example producer
 
 const amqp = require('amqp')
-const config = require('./config.json')
+const config = require('../config.json')
 
 const connection = amqp.createConnection({
   host: config.host,
