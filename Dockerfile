@@ -2,9 +2,10 @@ FROM node:8.11.3-alpine
 
 WORKDIR /usr/src/certificate-worker
 
+COPY config.json ./
 COPY package.json ./
-COPY src ./src
 COPY yarn.lock ./
+COPY src ./src
 
 # Add support for https on wget
 RUN apk update && apk add --no-cache wget && apk --no-cache add openssl wget && apk add ca-certificates && update-ca-certificates
