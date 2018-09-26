@@ -1,5 +1,8 @@
 node_modules
-certification/*
+src/certification/*
 
 .DS_Store
 config.json
+
+*.swp
+*.prod

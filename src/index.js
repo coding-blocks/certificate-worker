@@ -35,15 +35,25 @@ queuePromise.then(q => {
   // Receive messages
   q.subscribe(async function ({ data, callback }) {
     try {
+      data.salt = v4().slice(-4)
+
       // 1. generate html
       const path = p.join(__dirname, './certification/' + v4() + ".pdf")
       const templatePath = p.join(__dirname, './templates/' + data.template + '.hbs')
+
       const document = {
         template: fs.readFileSync(templatePath).toString('utf-8'),
         context: {
           data
         },
-        path
+        path,
+        options: {
+          type: "pdf",
+          format: "A4",
+          orientation: "landscape",
+          border: "0",
+          base: "file:///" + __dirname + '/assets/'
+        }
       }
 
       await PDF.create(document, {
@@ -59,10 +69,11 @@ queuePromise.then(q => {
       const webhookPayload = {
         secret: config.appSecret,
         certificateId: data.certificateId,
-        url: linkForKey(destKeyName)
+        url: linkForKey(destKeyName),
+        salt: data.salt
       }
-
-      await needle('post', callback, webhookPayload, { json: true })
+	
+      await needle('patch', callback, webhookPayload, { json: true })
 
       // 4. Cleanup
       fs.unlinkSync(path)
@@ -70,7 +81,11 @@ queuePromise.then(q => {
 
       // If we get any error, let the webhook know about it
       Raven.captureException(err)
-      await needle('post', callback, { error: err }, { json: true })
+      await needle('patch', callback, {
+        certificateId: data.certificateId,
+        secret: config.appSecret,
+        error: err
+      }, { json: true })
     }
   });
 })
