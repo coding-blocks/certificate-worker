@@ -3,7 +3,9 @@ const PDF = require('handlebars-pdf')
 const v4 = require('uuid/v4')
 const p = require('path')
 const needle = require('needle')
+const moment = require('moment')
 const fs = require('fs')
+
 
 const Raven = require('./raven')
 const { uploadToMinio, linkForKey } = require('./minio')
@@ -36,7 +38,9 @@ queuePromise.then(q => {
   q.subscribe(async function ({ data, callback }) {
     try {
       data.salt = v4().slice(-4)
-
+      data.run.startString =  moment.unix(data.run.start).format("MMM YYYY")
+      data.run.endString = moment.unix(data.run.end).format("MMM YYYY")
+      
       // 1. generate html
       const path = p.join(__dirname, './certification/' + v4() + ".pdf")
       const templatePath = p.join(__dirname, './templates/' + data.template + '.hbs')

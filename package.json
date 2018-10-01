@@ -11,6 +11,7 @@
     "amqp": "^0.2.7",
     "handlebars-pdf": "^1.0.1",
     "minio": "^7.0.0",
+    "moment": "^2.22.2",
     "needle": "^2.2.2",
     "phantomjs-prebuilt": "^2.1.16",
     "raven": "^2.6.4",
