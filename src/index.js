@@ -36,7 +36,6 @@ queuePromise.then(q => {
 
   // Receive messages
   q.subscribe(async function ({ data, callback }) {
-    console.log("data: " + data)
     try {
       data.salt = v4().slice(-4)
       data.run.startString =  moment.unix(data.run.start).format("MMM YYYY")
@@ -64,7 +63,6 @@ queuePromise.then(q => {
       await PDF.create(document, {
         phantomPath: p.join(__dirname, '../node_modules/phantomjs-prebuilt/bin/phantomjs')
       })
-      console.log("PDF created")
 
       // 2. Upload to minio
       const destKeyName = `${data.name.replace(' ', '')}_${v4()}`
