@@ -1,6 +1,7 @@
 // An example producer
 
 const amqp = require('amqp')
+const fs = require('fs')
 const config = require('../config.json')
 
 const connection = amqp.createConnection({
@@ -19,14 +20,29 @@ const connectionPromise = new Promise ((resolve, reject) => {
 })
 
 connectionPromise.then(conn => {
-  conn.publish('amoeba-certificate', {
-    secret: 'somesecretshitshere',
-    certificateId: Math.floor(Math.random()* 100),
-    data: {
-      name: 'abhishek',
-      template: 'java'
-    },
-    callback: 'evil.com'
+  fs.readdir('./src/templates', (err, files) => {
+    if (!err){
+      files.forEach(file => {
+        conn.publish('amoeba-certificate', {
+          secret: 'somesecretshitshere',
+          certificateId: Math.floor(Math.random()* 100),
+          data: {
+            user: {
+              firstname: 'Jatin',
+              lastname: 'Katyal'
+            },
+            run: {
+              start: '01/01/1997',
+              end: '01/01/1997'
+            },
+            template: file.split('.')[0]
+          },
+          callback: 'evil.com'
+        })
+      })
+    } else {
+      console.log(err)
+    }
   })
 })
 
