@@ -31,6 +31,9 @@ connectionPromise.then(conn => {
               firstname: 'Jatin',
               lastname: 'Katyal'
             },
+            runAttempt: {
+              id: 5894
+            },
             run: {
               start: '01/01/1997',
               end: '01/01/1997'
