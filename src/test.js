@@ -2,13 +2,13 @@
 
 const amqp = require('amqp')
 const fs = require('fs')
-const config = require('../config.json')
+require('dotenv').config()
 
 const connection = amqp.createConnection({
-  host: config.host,
-  login: config.login,
-  password: config.password,
-  port: config.port
+  host: process.env.host,
+  login: process.env.login,
+  password: process.env.password,
+  port: process.env.port
 })
 
 connection.on('error', function (e) {
@@ -48,6 +48,3 @@ connectionPromise.then(conn => {
     }
   })
 })
-
-
-

@@ -9,13 +9,13 @@ const fs = require('fs')
 
 const Raven = require('./raven')
 const { uploadToMinio, linkForKey } = require('./minio')
-const config = require('../config.json')
+require('dotenv').config()
 
 const connection = amqp.createConnection({
-  host: config.host,
-  login: config.login,
-  password: config.password,
-  port: config.port
+  host: process.env.host,
+  login: process.env.login,
+  password: process.env.password,
+  port: process.env.port
 })
 
 connection.on('error', function (e) {
@@ -40,7 +40,7 @@ queuePromise.then(q => {
       data.salt = v4().slice(-4)
       data.run.startString =  moment.unix(data.run.start).format("MMM YYYY")
       data.run.endString = moment.unix(data.run.end).format("MMM YYYY")
-      
+
       // 1. generate html
       const path = p.join(__dirname, './certification/' + v4() + ".pdf")
       const templatePath = p.join(__dirname, './templates/' + data.template + '.hbs')
@@ -76,7 +76,7 @@ queuePromise.then(q => {
         url: linkForKey(destKeyName),
         salt: data.salt
       }
-	
+
       await needle('patch', callback, webhookPayload, { json: true })
 
       // 4. Cleanup
@@ -93,5 +93,3 @@ queuePromise.then(q => {
     }
   });
 })
-
-
