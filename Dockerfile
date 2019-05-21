@@ -2,7 +2,6 @@ FROM node:8.11.3-alpine
 
 WORKDIR /usr/src/certificate-worker
 
-COPY config.json ./
 COPY package.json ./
 COPY yarn.lock ./
 COPY src ./src
