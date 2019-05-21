@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "amqp": "^0.2.7",
+    "dotenv": "^8.0.0",
     "handlebars-pdf": "^1.0.1",
     "minio": "^7.0.0",
     "moment": "^2.22.2",
