@@ -9,7 +9,7 @@ const fs = require('fs')
 
 const Raven = require('./raven')
 const { uploadToMinio, linkForKey } = require('./minio')
-const config = require('../config.json')
+const config = require('./config')
 
 const connection = amqp.createConnection({
   host: config.host,

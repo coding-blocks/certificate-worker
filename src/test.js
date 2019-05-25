@@ -2,7 +2,7 @@
 
 const amqp = require('amqp')
 const fs = require('fs')
-const config = require('../config.json')
+const config = require('./config')
 
 const connection = amqp.createConnection({
   host: config.host,

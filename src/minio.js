@@ -1,5 +1,5 @@
 const Minio = require('minio')
-const config = require('../config.json')
+const config = require('./config')
 
 var minioClient = new Minio.Client({
   endPoint: 'minio.codingblocks.com',
