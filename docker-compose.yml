@@ -1,0 +1,9 @@
+version: '3'
+services:
+  worker:
+    build: .
+    restart: on-failure:5
+    ports:
+      - "5672:5672"
+    env_file: 
+      - .env

@@ -22,6 +22,10 @@ connection.on('error', function (e) {
   console.error("Error from amqp: ", e)
 })
 
+connection.on('close', function (e) {
+  process.exit(1) // exit with non zero error code -> make container crash 
+})
+
 const queuePromise = new Promise((resolve, reject) => {
   connection.on('ready', function () {
     connection.queue('amoeba-certificate', {durable: true, autoDelete: false}, q => {
