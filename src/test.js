@@ -28,8 +28,8 @@ connectionPromise.then(conn => {
           certificateId: Math.floor(Math.random()* 100),
           data: {
             user: {
-              firstname: 'Jatin',
-              lastname: 'Katyal'
+              firstname: 'ASIF',
+              lastname: 'KHAN'
             },
             runAttempt: {
               id: 5894

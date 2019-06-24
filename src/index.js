@@ -44,6 +44,9 @@ queuePromise.then(q => {
       data.salt = v4().slice(-4)
       data.run.startString =  moment.unix(data.run.start).format("MMM YYYY")
       data.run.endString = moment.unix(data.run.end).format("MMM YYYY")
+
+      data.user.firstname = data.user.firstname.toLowerCase()
+      data.user.lastname = data.user.lastname.toLowerCase()
       
       // 1. generate html
       const path = p.join(__dirname, './certification/' + v4() + ".pdf")
