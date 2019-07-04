@@ -1,11 +1,5 @@
 FROM node:8.11.3-alpine
 
-WORKDIR /usr/src/certificate-worker
-
-COPY package.json ./
-COPY yarn.lock ./
-COPY src ./src
-
 # Add support for https on wget
 RUN apk update && apk add --no-cache wget && apk --no-cache add openssl wget && apk add ca-certificates && update-ca-certificates
 
@@ -17,6 +11,11 @@ RUN wget -qO- "https://github.com/dustinblackman/phantomized/releases/download/2
 # Add fonts required by phantomjs to render html correctly
 RUN apk add --update ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family && rm -rf /var/cache/apk/*
 
+WORKDIR /usr/src/certificate-worker
+
+COPY package.json ./
+COPY yarn.lock ./
+COPY src ./src
 
 RUN yarn install --pure-lockfile
 
