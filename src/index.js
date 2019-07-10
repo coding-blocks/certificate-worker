@@ -3,9 +3,11 @@ const PDF = require('handlebars-pdf')
 const v4 = require('uuid/v4')
 const p = require('path')
 const needle = require('needle')
-const moment = require('moment')
+const moment = require('moment-timezone')
 const fs = require('fs')
 
+// set default timezone
+moment.tz.setDefault('Asia/Kolkata');
 
 const Raven = require('./raven')
 const { uploadToMinio, linkForKey } = require('./minio')
