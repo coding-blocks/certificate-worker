@@ -2,9 +2,9 @@ const Minio = require('minio')
 const config = require('./config')
 
 var minioClient = new Minio.Client({
-  endPoint: 'minio.codingblocks.com',
-  port: 443,
-  useSSL: true,
+  endPoint: 'minio-i.codingblocks.com',
+//   port: 443,
+  useSSL: false,
   accessKey: config.minio.accessKey,
   secretKey: config.minio.secretKey
 });
