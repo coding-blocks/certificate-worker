@@ -68,5 +68,40 @@ module.exports = {
     bg: 'img/bg-angular.jpg',
     logo: 'img/certi-angular.svg',
     name: 'Angular Online Course'
+  },
+  cpp12: {
+    bg: 'img/bg-cpp12.jpg',
+    logo: 'img/certi-cpp12.svg',
+    name: 'C++ Class XII Online Course'
+  },
+  java12: {
+    bg: 'img/bg-java.jpg',
+    logo: 'img/certi-java.svg',
+    name: 'Class XII Java Practical Online Course'
+  },
+  django: {
+    bg: 'img/bg-django.jpg',
+    logo: 'img/certi-django.svg',
+    name: 'Web Development with Django Online Course'
+  },
+  datascience: {
+    bg: 'img/bg-datascience.jpg',
+    logo: 'img/certi-datascience.svg',
+    name: 'Data Science Master Online Course'
+  },
+  algojava: {
+    bg: 'img/bg-java.jpg',
+    logo: 'img/certi-java.svg',
+    name: 'Algo.Java Online Course'
+  },
+  interview_cpp: {
+    bg: 'img/bg-interview.jpg',
+    logo: 'img/certi-interview.svg',
+    name: 'Interview Preparation (C++) Online Course'
+  },
+  interview_java: {
+  bg: 'img/bg-interview.jpg',
+    logo: 'img/certi-interview.svg',
+    name: 'Interview Preparation (Java) Online Course'    
   }
 }

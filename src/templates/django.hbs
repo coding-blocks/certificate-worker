@@ -20,19 +20,31 @@
     border-radius: 40px;
     height: 546px;
     position: relative;
-    background-image: url('img/bg-django.png');
+    background-image: url('img/bg-django.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 	}
 
-  .cb-image {
+  .logo-image {
     width: 170px;
     height: 58px;
     top: 34px;
-    background-image: url('img/cblogo.png');
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  .cb-image {
+    background-image: url('img/cblogo.png');
+  }
+
+  .cb-image.logo-image.bottom {
+    top: 435px;
+    left: 610px;
+  }
+
+  .hellointern-image {
+    background-image: url('img/hellointern.png')
   }
 
   .text {
@@ -81,6 +93,14 @@
 
   }
 
+  .signature.first {
+    left: 210px;
+  }
+
+  .signature.second {
+    left: 400px;
+  }
+
   .signature > img {
     width: 88px;
     height: 33px;
@@ -97,36 +117,75 @@
     top: 62px;
     left: 591px;
   }
+
+  a {
+    color: white;
+  }
+
 </style>
 <body>
   <div class="container">
-    <div class="cb-image text"></div>
-    <div class="completion text">CERTIFICATE OF COMPLETION</div>
+    {{#if (eq data.run.domain "hellointern")}}
+      <div class="logo-image cb-image text bottom"></div>
+      <div class="logo-image hellointern-image text"></div>
+    {{else}}
+      <div class="logo-image cb-image text"></div>
+    {{/if}}
+    
+    <div class="completion text">CERTIFICATE OF COMPLETION  </div>
     <div class="completion-sub text">This certificate is proudly presented to</div>
     <div class="name text">{{data.user.firstname}} {{data.user.lastname}}</div>
     <div class="course-text text">for successfully completing the Web Development with Django Online Course
       by Coding Blocks
     </div>
-
+    
     <img src="img/certi-django.svg" alt="" class="course-logo text">
-
+  
     <div class="batch text">
       <div class="duration">{{data.run.startString}} - {{data.run.endString}}</div>
       <hr>
       <div>Batch</div>
     </div>
 
-    <div class="signature text">
-      <img src="img/signmmgupta.png" alt="">
-      <hr>
-      <div>
-          Manmohan Gupta <br>
-          (Founder, Coding Blocks)
+    {{#if (eq data.run.domain "hellointern")}}
+      <div class="signature text first">
+        <img src="img/signmmgupta.png" alt="">
+        <hr>
+        <div>
+            Manmohan Gupta <br>
+            (Founder, Coding Blocks)
+        </div>
       </div>
-    </div>
+      <div class="signature text second">
+        <img src="img/signaashish.png" alt="">
+        <hr>
+        <div>
+          Aashish Malve<br>
+          (Director, HelloIntern)
+        </div>
+      </div>
+    {{else}}
+      <div class="signature text">
+        <img src="img/signmmgupta.png" alt="">
+        <hr>
+        <div>
+          Manmohan Gupta 2 <br>
+          (Founder, Coding Blocks)
+        </div>
+      </div>
+    {{/if}}
 
     <div class="verify text">
-        The certificate can be verified at https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}
+      {{#if (eq data.run.domain "hellointern")}}
+        The certificate can be verified at 
+        <a href="https://hellointern.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}">
+          https://hellointern.codingblocks.com/app/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}
+        </a>
+      {{else}}
+        <a href="https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}">
+          https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}
+        </a>
+      {{/if}}
     </div>
   </div>
 
