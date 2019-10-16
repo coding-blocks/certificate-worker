@@ -19,9 +19,11 @@ const connectionPromise = new Promise ((resolve, reject) => {
   connection.on('ready', () => resolve(connection))
 })
 
+const eq = x => y => x==y
+
 connectionPromise.then(conn => {
-  fs.readdir('./src/templates', (err, files) => {
-    if (!err){
+  fs.readdir(__dirname + '/templates', (err, files) => {
+    if (!err) {
       files.forEach(file => {
         conn.publish('amoeba-certificate', {
           secret: 'somesecretshitshere',
@@ -36,7 +38,8 @@ connectionPromise.then(conn => {
             },
             run: {
               start: 1548416975,
-              end: 1548416990
+              end: 1548416990,
+              // domain: "hellointern"
             },
             template: file.split('.')[0]
           },

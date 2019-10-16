@@ -5,6 +5,11 @@ const p = require('path')
 const needle = require('needle')
 const moment = require('moment-timezone')
 const fs = require('fs')
+const Handlebars = require('handlebars')
+
+Handlebars.registerHelper('eq', (a,b) => {
+  return a==b
+})
 
 // set default timezone
 moment.tz.setDefault('Asia/Kolkata');
@@ -53,6 +58,8 @@ queuePromise.then(q => {
       // 1. generate html
       const path = p.join(__dirname, './certification/' + v4() + ".pdf")
       const templatePath = p.join(__dirname, './templates/' + data.template + '.hbs')
+
+      console.log(data.run)
 
       const document = {
         template: fs.readFileSync(templatePath).toString('utf-8'),

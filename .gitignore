@@ -8,3 +8,5 @@ config.json
 *.swp
 *.prod
 .env
+
+scripts/templates
