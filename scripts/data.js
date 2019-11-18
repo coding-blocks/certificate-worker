@@ -65,8 +65,8 @@ module.exports = {
     name: 'Python Online Course'
   },
   angular: {
-    bg: 'img/bg-angular.jpg',
-    logo: 'img/certi-angular.svg',
+    bg: 'img/bg-angular.png',
+    logo: 'img/certi-angular.png',
     name: 'Angular Online Course'
   },
   cpp12: {
@@ -80,12 +80,12 @@ module.exports = {
     name: 'Class XII Java Practical Online Course'
   },
   django: {
-    bg: 'img/bg-django.jpg',
+    bg: 'img/bg-django.png',
     logo: 'img/certi-django.svg',
     name: 'Web Development with Django Online Course'
   },
   datascience: {
-    bg: 'img/bg-datascience.jpg',
+    bg: 'img/bg-datascience.png',
     logo: 'img/certi-datascience.svg',
     name: 'Data Science Master Online Course'
   },
