@@ -5,8 +5,8 @@ module.exports = {
     name: 'Algo++ Online Course'
   },
   android: {
-    bg: 'img/bg-Android.jpg',
-    logo: 'img/certi-Android.svg',
+    bg: 'img/bg-android.jpg',
+    logo: 'img/certi-android.svg',
     name: 'Android Online Course'
   },
   chatbot: {
