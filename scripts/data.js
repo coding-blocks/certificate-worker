@@ -127,7 +127,7 @@ module.exports = {
   web_dev_front: {
     bg: 'img/bg-js.jpg',
     logo: 'img/certi-js.svg',
-    name: 'Web Development Backend'
+    name: 'Web Development Frontend'
   },
   ds_cpp: {
     bg: 'img/bg-cpp.jpg',
