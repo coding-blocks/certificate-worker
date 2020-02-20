@@ -100,8 +100,63 @@ module.exports = {
     name: 'Interview Preparation (C++) Online Course'
   },
   interview_java: {
-  bg: 'img/bg-interview.jpg',
+    bg: 'img/bg-interview.jpg',
     logo: 'img/certi-interview.svg',
     name: 'Interview Preparation (Java) Online Course'    
+  },
+  cpp_fundamentals: {
+    bg: 'img/bg-cpp.jpg',
+    logo: 'img/certi-cpp.svg',
+    name: 'C++ Fundamentals'
+  },
+  java_fundamentals: {
+    bg: 'img/bg-java.jpg',
+    logo: 'img/certi-java.svg',
+    name: 'Java Fundamentals'
+  },
+  py_fundamentals: {
+    bg: 'img/bg-python.jpg',
+    logo: 'img/certi-python.svg',
+    name: 'Python Fundamentals'
+  },
+  web_dev_back: {
+    bg: 'img/bg-js.jpg',
+    logo: 'img/certi-js.svg',
+    name: 'Web Development Backend'
+  },
+  web_dev_front: {
+    bg: 'img/bg-js.jpg',
+    logo: 'img/certi-js.svg',
+    name: 'Web Development Backend'
+  },
+  ds_cpp: {
+    bg: 'img/bg-cpp.jpg',
+    logo: 'img/certi-cpp.svg',
+    name: 'Data Structures in C++'
+  },
+  ds_java: {
+    bg: 'img/bg-java.jpg',
+    logo: 'img/certi-java.svg',
+    name: 'Data Structures in Java'
+  },
+  algo_cpp: {
+    bg: 'img/bg-cpp.jpg',
+    logo: 'img/certi-cpp.svg',
+    name: 'Algorithms in C++'
+  },
+  algo_java: {
+    bg: 'img/bg-java.jpg',
+    logo: 'img/certi-java.svg',
+    name: 'Algorithms in Java'
+  },
+  py_datascienct: {
+    bg: 'img/bg-datascience.png',
+    logo: 'img/certi-datascience.svg',
+    name: 'Python for Data Science'
+  },
+  cpp_stl: {
+    bg: 'img/bg-cpp.jpg',
+    logo: 'img/certi-cpp.svg',
+    name: 'C++ Standard Template Library'
   }
 }
