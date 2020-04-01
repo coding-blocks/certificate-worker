@@ -158,5 +158,10 @@ module.exports = {
     bg: 'img/bg-cpp.jpg',
     logo: 'img/certi-cpp.svg',
     name: 'C++ Standard Template Library'
+  },
+  ds_real: {
+    bg: 'img/bg-ds-real.png',
+    logo: 'img/certi-ds-real.svg',
+    name: 'Data Structures in Real Life Projects'
   }
 }
