@@ -163,5 +163,10 @@ module.exports = {
     bg: 'img/bg-ds-real.png',
     logo: 'img/certi-ds-real.svg',
     name: 'Data Structures in Real Life Projects'
+  },
+  react: {
+    bg: 'img/bg-react.png',
+    logo: 'img/certi-react.png',
+    name: 'Building Web Apps with React JS'
   }
 }
