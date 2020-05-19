@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      @font-face {
+        font-family: "Butler";
+        src: url(fonts/Butler_Bold.otf);
+      }
+      @font-face {
+        font-family: "Great Vibes";
+        src: url(fonts/GreatVibes-Regular.otf);
+      }
+      .container {
+        height: 595px;
+        width: 842px;
+        position: relative;
+        background-image: url('img/bg-nagarro-bootcamp.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .d-flex {
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+      }
+      .content {
+        font-family: Butler;
+        color: #4b4b4c;
+      }
+      .signature-divider {
+        height: 2px; 
+        background-color: #ad8545; 
+        width: 100%;
+        margin-top: 5px;
+      }
+      .name {
+        font-family: Great Vibes;
+        font-size: 2rem;
+      }
+    </style>
+  </head>  
+  <body>
+    <div class="container">
+      <center style="padding-top: 80px;">
+        <div style="d-flex">
+          <img src="img/nagarro-logo.png" width="150" />
+          <img src="img/cblogo-black.png" width="150" />
+        </div>
+        <img src="img/nagarro-certificate-header.png" width="400" style="margin-top: 20px;" />
+        <div class="content" style="margin-top: 20px;">
+          <div>
+            THIS CERTIFICATE IS PRESENTED TO
+          </span>
+          <div class="name" style="padding-top: 30px; padding-bottom: 30px">
+            {{data.user.firstname}} {{data.user.lastname}}
+          </div>
+          <div style="max-width: 350px;">
+            in Recognition for successfully completing CAREER BOOTCAMP coourse by Nagarro in association by Coding Blocks
+          </div>
+          <div class="d-flex" style="margin-top: 20px;">
+            <div style="position: absolute; left: 100; width: 180px">
+              <div style="color: #ad8545;">{{data.run.startString}} - {{data.run.endString}}</div>
+              <div class="signature-divider"></div>
+              <div style="margin-top: 5px;">DATE</div>
+            </div>
+            <div style="position: absolute; right: 100; width: 180px;">
+              <img src="img/signmmgupta-gold.png" width="100" />
+              <div class="signature-divider"></div>
+              Manmohan Gupta <br />
+              (Chief Mentor)
+            </div>
+          </div>
+        </div>
+      </center>
+    </div>
+  </body>
+</html>
