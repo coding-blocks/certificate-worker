@@ -43,12 +43,20 @@
       .name {
         font-family: Great Vibes;
         font-size: 2.5rem;
+        text-transform: capitalize;
+      }
+      .verify {
+        position: absolute;
+        font-size: 10px;
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
       }
     </style>
   </head>  
   <body>
     <div class="container">
-      <center style="padding-top: 80px;">
+      <center style="padding-top: 60px;">
         <div style="d-flex">
           <img src="img/nagarro-logo.png" width="150" />
           <img src="img/cblogo-black.png" width="150" />
@@ -76,6 +84,12 @@
               Manmohan Gupta <br />
               (Chief Mentor)
             </div>
+          </div>
+          <div class="verify">
+            The certificate can be verified at 
+            <a href="https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}">
+              https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}
+            </a>
           </div>
         </div>
       </center>
