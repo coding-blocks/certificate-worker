@@ -69,4 +69,4 @@ const base = `<base href="http://localhost:${PORT}/">`
 html = html.replace(/(?:\<style\>)/, base + '<style>');
 
 //sending html and pdf option to puppeteer
-createPdf(html, document.options);
+createPdf(html, document.options); 
