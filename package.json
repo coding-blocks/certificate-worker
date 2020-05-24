@@ -5,11 +5,11 @@
   "author": "abhishek97",
   "license": "MIT",
   "scripts": {
+    "static": "http-server ./src/assets/ -p 8000 --cors",
     "start": "node src/index.js"
   },
   "dependencies": {
     "amqp": "^0.2.7",
-    "express": "^4.17.1",
     "handlebars-pdf": "^1.0.1",
     "minio": "^7.0.0",
     "moment-timezone": "^0.5.26",
