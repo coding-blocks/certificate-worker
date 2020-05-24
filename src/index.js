@@ -1,33 +1,15 @@
 const amqp = require('amqp')
-const PDF = require('handlebars-pdf')
 const v4 = require('uuid/v4')
 const p = require('path')
 const needle = require('needle')
 const moment = require('moment-timezone')
 const fs = require('fs')
 const Handlebars = require('handlebars')
-const express = require('express');
 
 const Raven = require('./raven')
 const { uploadToMinio, linkForKey } = require('./minio')
 const config = require('./config')
-const createPdf = require('./utils/pdf');
-
-//serving assets to localhost because puppeteer dont allow access to local files for security reasons
-//read the issue here :- https://github.com/puppeteer/puppeteer/issues/1942
-const PORT = process.env.StaticServerPORT || 3500;
-const app = express();
-
-//without this header, fonts were not working in browser on localhost
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', `*`);
-    next();
-})
-app.use(express.static(p.join(__dirname, 'assets')));
-app.listen(PORT, () => {
-    console.log("server started");
-});
-
+const pdf = require('./utils/pdf');
 
 Handlebars.registerHelper('eq', (a,b) => {
   return a==b
@@ -95,11 +77,11 @@ queuePromise.then(q => {
       const template = Handlebars.compile(document.template);
       let html = template(document.context);
       //Adding base tag in html to fetch static content from localhost
-      const base = `<base href="http://localhost:${PORT}/">`;
+      const base = `<base href="http://localhost:8000/">`;
       html = html.replace(/(?:\<style\>)/, base + '<style>');
 
       //sending html and pdf option to puppeteer
-      await createPdf(html, document.options);
+      await pdf.createPdf(html, document.options);
 
       // 2. Upload to minio
       const destKeyName = `${data.name.replace(' ', '')}_${v4()}`
