@@ -5,7 +5,8 @@
   "author": "abhishek97",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "node src/test.js"
   },
   "dependencies": {
     "amqp": "^0.2.7",
