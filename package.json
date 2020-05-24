@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "amqp": "^0.2.7",
+    "http-server": "^0.12.3",
     "handlebars-pdf": "^1.0.1",
     "minio": "^7.0.0",
     "moment-timezone": "^0.5.26",
