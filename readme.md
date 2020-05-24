@@ -1,5 +1,25 @@
-## How to Build 
+## Certificate Worker
+This service is used to generate a certificate-pdf for given student data. It works on amqp protocol on rabbitmq-server and uses amoeba-certificate as consumer.
 
-- Build Docker Image: `docker build -t certificate-worker .`
-- Run a Container from the image: `docker run -t -d --env-file .env certificate-worker`
-- sh into the container: `docker exec -it <container-id>  /bin/sh`
+## Setup
+This project can be setup locally as well as on docker.
+
+## Setup locally
+* Firstly download and install rabbitmq-server on your system. [See here](https://www.rabbitmq.com/download.html)
+* Create .env
+* Make sure rabbitmq-server is running (default port 5672)
+* Start server.
+  ```
+  npm start
+  ```
+* For testing.
+   ```
+  npm test
+  ```
+
+## Setup on docker
+* Create .env
+* Run all services on docker
+  ```
+  docker-compose up
+  ```

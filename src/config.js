@@ -1,7 +1,7 @@
 module.exports = {
   host: process.env.host || "localhost",
-  login: process.env.login || "test",
-  password: process.env.password || "test",
+  login: process.env.login || "guest",
+  password: process.env.password || "guest",
   port: process.env.port || "5672",
   appSecret: process.env.appSecret || "" ,
   minio: {
