@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "static": "http-server ./src/assets/ -p 8000 --cors",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "node src/test.js"
   },
   "dependencies": {
     "amqp": "^0.2.7",
