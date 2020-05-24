@@ -9,7 +9,7 @@ const Handlebars = require('handlebars')
 const Raven = require('./raven')
 const { uploadToMinio, linkForKey } = require('./minio')
 const config = require('./config')
-const pdf = require('./utils/pdf');
+const createPdf = require('./utils/pdf');
 
 Handlebars.registerHelper('eq', (a,b) => {
   return a==b
@@ -81,7 +81,7 @@ queuePromise.then(q => {
       html = html.replace(/(?:\<style\>)/, base + '<style>');
 
       //sending html and pdf option to puppeteer
-      await pdf.createPdf(html, document.options);
+      await createPdf(html, document.options);
 
       // 2. Upload to minio
       const destKeyName = `${data.name.replace(' ', '')}_${v4()}`
