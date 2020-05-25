@@ -16,8 +16,9 @@ WORKDIR /usr/src/certificate-worker
 COPY package.json ./
 COPY yarn.lock ./
 COPY src ./src
+COPY start.sh ./
 
 RUN yarn install --pure-lockfile
-
-CMD ["yarn",  "start"]
+CMD ./start.sh
+# CMD ["yarn",  "start"]
 
