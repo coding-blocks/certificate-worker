@@ -11,6 +11,11 @@ RUN wget -qO- "https://github.com/dustinblackman/phantomized/releases/download/2
 # Add fonts required by phantomjs to render html correctly
 RUN apk add --update ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family && rm -rf /var/cache/apk/*
 
+# Avoids npm install phase on every docker build
+COPY package.json /tmp/package.json
+RUN cd /tmp && npm install
+RUN mkdir -p /usr/src/certificate-worker && cp -a /tmp/node_modules /usr/src/certificate-worker/
+
 WORKDIR /usr/src/certificate-worker
 
 COPY package.json ./
