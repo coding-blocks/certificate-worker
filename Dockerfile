@@ -18,7 +18,7 @@ RUN mkdir -p /usr/src/certificate-worker && cp -a /tmp/node_modules /usr/src/cer
 
 WORKDIR /usr/src/certificate-worker
 
-COPY package.json ./
+COPY package.json /usr/src/certificate-worker
 COPY yarn.lock ./
 COPY src ./src
 
