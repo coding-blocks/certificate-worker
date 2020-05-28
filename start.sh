@@ -4,10 +4,10 @@
 set -m
   
 # Start the primary process and put it in the background
-http-server ./src/assets/ -p 8000 --cors &
+yarn static
   
 # Start the helper process
-node ./src/index.js
+yarn start
   
 # the my_helper_process might need to know how to wait on the
 # primary process to start before it does its work and returns
