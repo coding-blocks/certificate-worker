@@ -67,8 +67,8 @@ queuePromise.then(q => {
             data
           },
           options: {
-              format: 'A4',
-              landscape: true,
+	      height: '595px', 
+	      width: '842px',
               printBackground: true,
               path: path  
           }
