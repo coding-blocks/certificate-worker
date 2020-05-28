@@ -19,6 +19,7 @@ COPY src ./src
 COPY start.sh ./
 
 RUN yarn install --pure-lockfile
+RUN chmod +x start.sh
 CMD ./start.sh
-# CMD ["yarn",  "start"]
+
 
