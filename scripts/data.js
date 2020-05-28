@@ -55,8 +55,8 @@ module.exports = {
     name: 'Node JS Online Course'
   },
   ml: {
-    bg: 'img/bg-ml.jpg',
-    logo: 'img/certi-ml.svg',
+    bg: 'img/bg-ml.png',
+    logo: 'img/certi-ml.png',
     name: 'Machine Learning Online Course'
   },
   python: {
