@@ -5,16 +5,19 @@
   "author": "abhishek97",
   "license": "MIT",
   "scripts": {
+    "static": "http-server ./src/assets/ -p 8000 --cors",
     "start": "node src/index.js",
     "test": "node src/test.js"
   },
   "dependencies": {
     "amqp": "^0.2.7",
+    "http-server": "^0.12.3",
     "handlebars-pdf": "^1.0.1",
     "minio": "^7.0.0",
     "moment-timezone": "^0.5.26",
     "needle": "^2.2.2",
     "phantomjs-prebuilt": "^2.1.16",
+    "puppeteer": "^3.1.0",
     "raven": "^2.6.4",
     "uuid": "^3.3.2"
   }
