@@ -67,10 +67,10 @@ queuePromise.then(q => {
             data
           },
           options: {
-	      height: '595px', 
-	      width: '842px',
-              printBackground: true,
-              path: path  
+            height: '595px', 
+            width: '842px',
+            printBackground: true,
+            path: path  
           }
       };
 

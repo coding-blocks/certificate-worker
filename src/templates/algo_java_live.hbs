@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/@coding-blocks/motley@1.1.0/dist/app.min.css">
+    <style>
+      @font-face {
+        font-family: "BebasNeue";
+        src: url(fonts/BebasNeue-Bold.ttf) format('truetype');
+      }
+      @font-face {
+        font-family: "Dhanikans";
+        src: url(fonts/Dhanikans_Signature_2_dafont.ttf) format("truetype");
+      }
+      .certificate-lite {
+        height: 833px;
+        width: 1187px;
+        background: #ffffff;
+        font-family: "Gilroy", sans-serif;
+      }
+      .name {
+        font-family: Dhanikans;
+        text-transform: capitalize;
+        font-size: 60px;
+        margin-top: 50px;
+      }
+      .duration {
+        font-size: 20px;
+      }
+      .certificate-lite__left-section {
+        width: 220px;
+        height: 100%;
+        position: relative;
+        -webkit-print-color-adjust: exact !important;
+        background: linear-gradient(0deg, #0D41E1, #0C63E7, #0A85ED, #09A6F3, #07C8F9);
+      }
+      .certificate-lite__left-section img {
+        position: absolute;
+        bottom: 48px;
+        left: 48px;
+      }
+      .certificate-lite__right-section {
+        flex: 1;
+        padding: 80px 0 0 100px;
+        position: relative;
+      }
+      .certificate-lite__right-section__logo {
+        height: 80px !important;
+      }
+      .certificate-lite__right-section__title {
+        margin-top: 36px;
+        font-size: 82px;
+        font-family: "BebasNeue", sans-serif;
+        margin-bottom: 37px;
+      }
+      .certificate-lite__right-section__badge {
+        position: absolute;
+        -webkit-print-color-adjust: exact !important;
+        background: linear-gradient(0deg, #0D41E1, #0C63E7, #0A85ED, #09A6F3, #07C8F9);
+        top: 0;
+        right: 68px;
+        width: 205px;
+        height: 190px;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 100%, 0% 75%);
+      }
+      .certificate-lite__right-section__badge .position-relative .extra-bold {
+        bottom: 25%;
+        font-size: 37px;
+      }
+      .certificate-lite__right-section__description {
+        margin-top: 86px;
+      }
+      .certificate-lite__right-section__signature-row {
+        margin-top: 38px;
+      }
+      .certificate-lite__right-section__signature-row .signature-divider {
+        height: 1px;
+        width: 169px;
+        background: #000000;
+        margin-bottom: 17px;
+      }
+      .certificate-lite__right-section__signature-row .signature-divider {
+        margin-top: 21px;
+      }
+    </style>
+  </head>
+  <body class="pt-0">
+    <div class="certificate-lite border row no-gutters">
+      <div class="certificate-lite__left-section">
+        <img src="img/java-white.png">
+      </div>
+      <div class="certificate-lite__right-section">
+        <div class="certificate-lite__right-section__badge">
+          <div class="position-relative h-100">
+            <div class="extra-bold white position-absolute t-align-c w-100">
+              LIVE<br>BATCHES
+            </div>
+          </div>
+        </div>
+        <img src="img/cblogo-black.png" class="certificate-lite__right-section__logo">
+        <div class="certificate-lite__right-section__title">
+          CERTIFICATE OF COMPLETION
+        </div>
+        <div class="font-mdxl">This certificate is proudly presented to</div>
+        <div class="name">{{data.user.firstname}} {{data.user.lastname}}</div>
+        <div class="font-mdxl certificate-lite__right-section__description">
+          for successfully completing the<br><strong>Algo.Java Live Classroom</strong> course.
+        </div>
+        <div class="certificate-lite__right-section__signature-row row no-gutters align-items-end">
+          <div>
+            <div class="duration">{{data.run.startString}} - {{data.run.endString}}</div>
+            <div class="signature-divider"></div>
+            <div class="font-xl">Date</div>
+          </div>
+
+          <div style="margin-left: 162px;">
+            <img src="img/signmmgupta-black.png">
+            <div class="signature-divider"></div>
+            <div class="font-xl">Manmohan Gupta (Founder, Coding Blocks)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -13,6 +13,7 @@ module.exports = {
             await page.setContent(html, {
                 waitUntil: 'networkidle0'
             });
+            await page.emulateMedia('screen');
 
             await page.pdf(options);
             await browser.close();
