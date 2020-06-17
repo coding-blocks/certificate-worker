@@ -5,10 +5,10 @@ const fs = require('fs')
 const config = require('./config')
 
 const connection = amqp.createConnection({
-  host: config.host,
-  login: config.login,
-  password: config.password,
-  port: config.port
+  host: '127.0.0.1',
+  login: 'test',
+  password: 'test',
+  port: 5672
 })
 
 connection.on('error', function (e) {
@@ -22,9 +22,9 @@ const connectionPromise = new Promise ((resolve, reject) => {
 const eq = x => y => x==y
 
 connectionPromise.then(conn => {
-  fs.readdir(__dirname + '/templates', (err, files) => {
-    if (!err) {
-      files.forEach(file => {
+  // fs.readdir(__dirname + '/templates', (err, files) => {
+  //   if (!err) {
+  //     files.forEach(file => {
         conn.publish('amoeba-certificate', {
           secret: 'somesecretshitshere',
           certificateId: Math.floor(Math.random()* 100),
@@ -41,15 +41,15 @@ connectionPromise.then(conn => {
               end: 1548416990,
               // domain: "hellointern"
             },
-            template: file.split('.')[0]
+            template: 'cpp'
           },
           callback: 'evil.com'
         })
-      })
-    } else {
-      console.log(err)
-    }
-  })
+      // })
+  //   } else {
+  //     console.log(err)
+  //   }
+  // })
 })
 
 

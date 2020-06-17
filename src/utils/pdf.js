@@ -5,7 +5,9 @@ module.exports = {
 	createPdf: async function(html, options) {
 	    try {
             const browser = await puppeteer.launch({
-                headless: true
+                executablePath: process.env.CHROMIUM_PATH,
+                headless: true,
+                args: ["--no-sandbox"]
             });
 
             const page = await browser.newPage();

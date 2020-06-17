@@ -9,7 +9,10 @@ services:
       - "5672:5672"
       - "15672:15672"
   worker:
+    image: codingblocks/certificate-worker
     build: .
+    volumes: 
+      - src/certification:/usr/src/certificate-worker/src/certification
     depends_on:
       - rabbitmq
     restart: on-failure

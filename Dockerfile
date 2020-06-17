@@ -6,6 +6,11 @@ RUN apk update && apk add --no-cache wget && apk --no-cache add openssl wget && 
 # Add fonts required by phantomjs to render html correctly
 RUN apk add --update ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family && rm -rf /var/cache/apk/*
 
+# Install Chromium
+RUN apk add --no-cache chromium
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV CHROMIUM_PATH /usr/bin/chromium-browser
+
 WORKDIR /usr/src/certificate-worker
 
 COPY package.json ./
