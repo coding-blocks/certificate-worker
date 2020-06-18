@@ -2,7 +2,7 @@ const fp = require('fastify-plugin');
 const handlers = require('./handlers');
 const config = require('../../config');
 
-module.exports = fp((app, opts, next) => {``
+module.exports = fp((app, opts, next) => {
   const channel = app.amqpChannel
 
   channel.assertQueue(config.amqp.queuename, {
