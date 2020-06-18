@@ -1,7 +1,11 @@
 const fp = require('fastify-plugin')
 
 function transformStringIntoObjectId(str) {
-  return new this.mongo.ObjectId(str)
+  try {
+    return new this.mongo.ObjectId(str)
+  } catch (err) {
+    return ''
+  }
 }
 
 module.exports = fp((app, opts, next) => {

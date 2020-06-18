@@ -1,5 +1,4 @@
 const schema = require('../schemas/layouts');
-const { request } = require('needle');
 
 module.exports = async (app, opts) => {
   app.get('/', async (request, reply) => {
@@ -8,14 +7,28 @@ module.exports = async (app, opts) => {
       .find()
       .toArray()
   })
-  app.get('/:id', async (request, reply) => {
-    return app.mongo.db
+  app.get('/:id', { schema: schema.GETById }, async (request, reply) => {
+    const layout = await app.mongo.db
       .collection('layouts')
       .findOne({
         _id: app.transformStringIntoObjectId(request.params.id)
       })
+    if (!layout) return reply.callNotFound()
+    return layout
   })
-  app.post('/', { schema }, async (request, reply) => {
+  app.patch('/:id', { schema: schema.UPDATE }, async (request, reply) => {
+    return app.mongo.db
+      .collection('layouts')
+      .findOneAndUpdate({
+        _id: app.transformStringIntoObjectId(request.params.id)
+      }, {
+        $set: {
+          ...request.body,
+          updated_at: Date.now()
+        }
+      })
+  })
+  app.post('/', { schema: schema.CREATE }, async (request, reply) => {
     return app.mongo.db
       .collection('layouts')
       .insertOne({
