@@ -12,6 +12,11 @@ app
     url: config.db.url,
     forceClose: true
   })
+  // Load all the plugins
+  .register(AutoLoad, {
+    dir: path.join(__dirname, 'plugins'),
+    options: {}
+  })
   // Load all the services
   .register(AutoLoad, {
     dir: path.join(__dirname, 'services'),
