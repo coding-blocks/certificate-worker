@@ -1,5 +1,5 @@
 module.exports = {
-  PUBLISH: async (request, reply) => {
+  PUBLISH: app => async (request, reply) => {
 
   }
 }

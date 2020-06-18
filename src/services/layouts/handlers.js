@@ -1,11 +1,11 @@
 module.exports = {
-  GET: async (request, reply) => {
+  GET: app => async (request, reply) => {
     return app.mongo.db
       .collection('layouts')
       .find()
       .toArray()
   },
-  GETById: async (request, reply) => {
+  GETById: app => async (request, reply) => {
     const layout = await app.mongo.db
       .collection('layouts')
       .findOne({
@@ -14,7 +14,7 @@ module.exports = {
     if (!layout) return reply.callNotFound()
     return layout
   },
-  POST: async (request, reply) => {
+  POST: app => async (request, reply) => {
     return app.mongo.db
       .collection('layouts')
       .insertOne({
@@ -22,8 +22,9 @@ module.exports = {
         created_at: Date.now(),
         updated_at: Date.now()
       })
+      .value
   },
-  PATCH: async (request, reply) => {
+  PATCH: app => async (request, reply) => {
     return app.mongo.db
       .collection('layouts')
       .findOneAndUpdate({
@@ -34,5 +35,6 @@ module.exports = {
           updated_at: Date.now()
         }
       })
+      .value
   }
 }
