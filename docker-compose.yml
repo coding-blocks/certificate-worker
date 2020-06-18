@@ -11,8 +11,6 @@ services:
   worker:
     image: codingblocks/certificate-worker
     build: .
-    volumes: 
-      - src/certification:/usr/src/certificate-worker/src/certification
     depends_on:
       - rabbitmq
     restart: on-failure

@@ -12,6 +12,12 @@ app
     url: config.db.url,
     forceClose: true
   })
+  .register(require('fastify-amqp'), {
+    host: config.amqp.host,
+    port: config.amqp.port,
+    user: config.amqp.user,
+    pass: config.amqp.password
+  })
   // Load all the plugins
   .register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),

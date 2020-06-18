@@ -22,13 +22,13 @@ const connectionPromise = new Promise ((resolve, reject) => {
 const eq = x => y => x==y
 
 connectionPromise.then(conn => {
-  // fs.readdir(__dirname + '/templates', (err, files) => {
-  //   if (!err) {
-  //     files.forEach(file => {
-        conn.publish('amoeba-certificate', {
+  fs.readdir(__dirname + '/templates', (err, files) => {
+    if (!err) {
+      files.forEach(file => {
+        conn.publish(config.amqp.queuename, {
           secret: 'somesecretshitshere',
-          certificateId: Math.floor(Math.random()* 100),
           data: {
+            certificateId: Math.floor(Math.random()* 100),
             user: {
               firstname: 'ASIF',
               lastname: 'KHAN'
@@ -45,11 +45,11 @@ connectionPromise.then(conn => {
           },
           callback: 'evil.com'
         })
-      // })
-  //   } else {
-  //     console.log(err)
-  //   }
-  // })
+      })
+    } else {
+      console.log(err)
+    }
+  })
 })
 
 
