@@ -52,7 +52,7 @@ module.exports = {
     await pdf.createPdf(html, document.options);
 
     // 2. Upload to minio
-    const destKeyName = v4()
+    const destKeyName = `${v4()}.pdf`
     await uploadToMinio(outPath, destKeyName)
 
     // 3. Send event via webhook
@@ -67,7 +67,6 @@ module.exports = {
     fs.unlinkSync(path)
   },
   GenerateFromLayout: app => async data => {
-    console.log(data)
     const layout = await app.mongo.db
       .collection('layouts')
       .findOne({
@@ -89,10 +88,10 @@ module.exports = {
     const template = Handlebars.compile(document.template);
     const html = template(document.context);
     await pdf.createPdf(html, document.options);
-    const destKeyName = v4()
+    const destKeyName = `${v4()}.pdf`
     await uploadToMinio(outPath, destKeyName)
 
-    await U.sendCallback(callback, {
+    await U.sendCallback(data.callback, {
       url: linkForKey(destKeyName),
     })
   }

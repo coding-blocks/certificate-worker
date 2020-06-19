@@ -15,14 +15,17 @@ module.exports = {
     return layout
   },
   POST: app => async (request, reply) => {
-    return app.mongo.db
+    const res = await app.mongo.db
       .collection('layouts')
       .insertOne({
         ...request.body,
         created_at: Date.now(),
         updated_at: Date.now()
       })
-      .value
+
+    return {
+      value: res.ops[0]
+    }
   },
   PATCH: app => async (request, reply) => {
     return app.mongo.db
@@ -35,6 +38,5 @@ module.exports = {
           updated_at: Date.now()
         }
       })
-      .value
   }
 }
