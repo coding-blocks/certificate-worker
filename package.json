@@ -17,6 +17,7 @@
     "cross-env": "^7.0.2",
     "fastify": "^2.14.1",
     "fastify-amqp": "^0.3.0",
+    "fastify-auth": "^0.7.2",
     "fastify-autoload": "^1.2.2",
     "fastify-mongodb": "^2.0.0",
     "fastify-plugin": "^1.6.1",

@@ -502,6 +502,14 @@ fastify-amqp@^0.3.0:
     amqplib "^0.5.3"
     fastify-plugin "^1.6.0"
 
+fastify-auth@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/fastify-auth/-/fastify-auth-0.7.2.tgz#71fe8ec60957af3534ccf2c7a0f2c701bc34a1a6"
+  integrity sha512-IlgD874ZuPAKMP/0jaFTIHO1vz2KK+rRyXyVJw0KrgoaAAcFnqt9KB197ScqRQNf6tGBYJfSWnowngLvpMHPeQ==
+  dependencies:
+    fastify-plugin "^1.5.0"
+    reusify "^1.0.4"
+
 fastify-autoload@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/fastify-autoload/-/fastify-autoload-1.2.2.tgz#e1536fe2b617f0dbfe099113630950fe3d122f16"
@@ -517,7 +525,7 @@ fastify-mongodb@^2.0.0:
     fastify-plugin "^1.0.1"
     mongodb "^3.3.0"
 
-fastify-plugin@^1.0.1, fastify-plugin@^1.6.0, fastify-plugin@^1.6.1:
+fastify-plugin@^1.0.1, fastify-plugin@^1.5.0, fastify-plugin@^1.6.0, fastify-plugin@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-1.6.1.tgz#122f5a5eeb630d55c301713145a9d188e6d5dd5b"
   integrity sha512-APBcb27s+MjaBIerFirYmBLatoPCgmHZM6XP0K+nDL9k0yX8NJPWDY1RAC3bh6z+AB5ULS2j31BUfLMT3uaZ4A==
