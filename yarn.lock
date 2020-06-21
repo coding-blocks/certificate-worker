@@ -1016,6 +1016,13 @@ moment-timezone@^0.5.26:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
+mongod@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/mongod/-/mongod-2.0.0.tgz#ceec4b72305190e85d6f8fac992f15a47eb18c74"
+  integrity sha1-zuxLcjBRkOhdb4+smS8VpH6xjHQ=
+  dependencies:
+    promise-queue "^2.2.3"
+
 mongodb@^3.3.0:
   version "3.5.9"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.5.9.tgz#799b72be8110b7e71a882bb7ce0d84d05429f772"
@@ -1154,6 +1161,11 @@ progress@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+
+promise-queue@^2.2.3:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/promise-queue/-/promise-queue-2.2.5.tgz#2f6f5f7c0f6d08109e967659c79b88a9ed5e93b4"
+  integrity sha1-L29ffA9tCBCelnZZx5uIqe1ek7Q=
 
 proxy-addr@^2.0.6:
   version "2.0.6"

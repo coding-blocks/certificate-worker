@@ -32,7 +32,7 @@ app
       prefix: '/api' 
     }
   })
-  .listen(config.server.port)
+  .listen(config.server.port, '0.0.0.0')
   .catch(err => {
     app.log.error(err)
     process.exit(1)

@@ -10,3 +10,5 @@ config.json
 .env
 
 scripts/templates
+
+tmp/
