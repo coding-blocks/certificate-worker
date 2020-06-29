@@ -11,6 +11,9 @@ module.exports = {
     publicPath: "",
   },
   resolve: {
+    alias: {
+      '~': __dirname + '/frontend'
+    },
     extensions: [".js", ".jsx"],
   },
   module: {
