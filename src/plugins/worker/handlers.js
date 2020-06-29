@@ -45,7 +45,8 @@ module.exports = {
     const template = Handlebars.compile(document.template);
     let html = template(document.context);
     //Adding base tag in html to fetch static content from localhost
-    const base = `<base href="http://localhost:8000/">`;
+    const base = `<base href="http://localhost:${config.server.port}/assets/">`;
+    // const base = `<base href="http://localhost:8000">`;
     html = html.replace(/(?:\<style\>)/, base + '<style>');
 
     //sending html and pdf option to puppeteer
