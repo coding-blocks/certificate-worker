@@ -20,7 +20,8 @@ module.exports = {
     })
 
     return {
-      jwt: app.encodeJwt(userResp.data)
+      jwt: app.encodeJwt(userResp.data),
+      user: userResp.data
     }
   }
 }

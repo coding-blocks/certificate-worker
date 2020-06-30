@@ -1,0 +1,1 @@
+export const SET_USER = 'session/SET_USER'

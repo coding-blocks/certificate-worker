@@ -1,38 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { 
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
 
 import { initStore } from '~/store';
-import router from '~/router';
+import App from '~/app';
 
 const store = initStore()
 
-const App = () => {
+const ReactApp = () => {
   return (
     <Provider store={store}>
-      <Router>
-        <Switch>
-          {router.map((route, i) => {
-            const Page = require(`./pages${route.path.replaceAll(':', '_')}`).default
-            const Layout = require(`./layouts/${route.layout || 'base'}`).default
-            
-            return (
-              <Route path={route.path} key={i}>
-                <Layout>
-                  <Page />
-                </Layout>
-              </Route>
-            )
-          })}
-        </Switch>
-      </Router>
+      <App />
     </Provider>
   )
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"))
+ReactDOM.render(<ReactApp />, document.querySelector("#root"))

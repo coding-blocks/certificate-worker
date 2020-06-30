@@ -1,10 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useRefreshUser } from '~/services/session';
 import Api from '~/services/api';
 
 export default () => {
-  const queryParams = new URLSearchParams(useLocation().search);
   const history = useHistory()
+  const queryParams = new URLSearchParams(useLocation().search);
+  const refreshUser = useRefreshUser(useDispatch())
 
   React.useEffect(() => {
     (async () => {  
@@ -14,6 +17,7 @@ export default () => {
           code
         })
         localStorage.setItem('certificate-jwt', resp.data.jwt)
+        refreshUser()
       } catch (err) {
         console.log(err)
       }

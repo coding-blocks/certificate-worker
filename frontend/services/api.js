@@ -15,4 +15,12 @@ client.interceptors.request.use(config => {
   };
 });
 
+client.interceptors.response.use(response => {
+  if (response.status === 401) {
+    localStorage.removeItem('certificate-jwt')
+  }
+
+  return response
+})
+
 export default client
