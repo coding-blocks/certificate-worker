@@ -13,7 +13,7 @@ const App = () => {
     <Router>
       <Switch>
         {router.map((route, i) => {
-          const Page = require(`./pages/${route.page}`).default
+          const Page = require(`./pages${route.path}`).default
           const Layout = require(`./layouts/${route.layout || 'base'}`).default
           
           return (

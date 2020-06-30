@@ -3,7 +3,7 @@ import Api from '~/services/api';
 
 export default () => {
   React.useEffect(() => {
-    Api.get('/')
+    Api.get('layouts')
   }, []);
 
   return (

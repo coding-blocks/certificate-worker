@@ -4,6 +4,7 @@ const handlers = require('./handlers')
 module.exports = async (app, opts) => {
   app.addHook('preHandler', app.auth([
     app.verifyBearerToken,
+    app.verifyJwt,
   ]))
   app.get('/', handlers.GET(app))
   app.get('/:id', { schema: schema.GETById }, handlers.GETById(app))

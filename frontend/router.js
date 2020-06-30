@@ -1,10 +1,14 @@
 export default [
   {
-    path: '/layouts',
-    page: 'layouts'
+    path: '/oneauth/callback'
   },
   {
-    path: '/',
-    page: 'main'
+    path: '/login'
+  },
+  {
+    path: '/layouts'
+  },
+  {
+    path: '/'
   }
 ]

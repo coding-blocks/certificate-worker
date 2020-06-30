@@ -11,7 +11,13 @@ module.exports = {
     url: process.env.DB_URL || 'mongodb://localhost/certificates'
   },
   server: {
-    port: process.env.PORT || 4242
+    port: process.env.PORT || 4242,
+    secret: process.env.SECRET || 'securityFTW'
+  },
+  oneauth: {
+    url: process.env.ONEAUTH_URL || 'https://account.codingblocks.com',
+    client_id: process.env.CLIENT_ID || 2912225628,
+    client_secret: process.env.CLIENT_SECRET
   },
   minio: {
     bucketName: process.env.minioBucketName || "bucket",

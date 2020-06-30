@@ -23,6 +23,9 @@ app
     root: path.join(__dirname, 'assets'),
     prefix: '/assets'
   })
+  .register(require('fastify-cors'), {
+    origin: true
+  })
   // Load all the plugins
   .register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
