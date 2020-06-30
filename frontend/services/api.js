@@ -6,4 +6,13 @@ const client = axios.create({
   responseType: 'json'
 })
 
+client.interceptors.request.use(config => {
+  return {
+    ...config,
+    headers: {
+      Authorization: `JWT ${localStorage.getItem('certificate-jwt')}`
+    }
+  };
+});
+
 export default client

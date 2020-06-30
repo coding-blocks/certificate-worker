@@ -1,19 +1,24 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Api from '~/services/api';
 
 export default () => {
   const queryParams = new URLSearchParams(useLocation().search);
+  const history = useHistory()
 
   React.useEffect(() => {
-    const code = queryParams.get('code')
-    Api
-      .post('oneauth/login', {
-        code
-      })
-      .then(resp => {
-        console.log(resp)
-      })
+    (async () => {  
+      try {
+        const code = queryParams.get('code')
+        const resp = await Api.post('oneauth/login', {
+          code
+        })
+        localStorage.setItem('certificate-jwt', resp.data.jwt)
+      } catch (err) {
+        console.log(err)
+      }
+      history.push('/')
+    })()
   }, [])
 
   return null

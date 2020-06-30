@@ -1,8 +1,6 @@
 const fp = require('fastify-plugin');
-const jwt = require('jsonwebtoken');
-const config = require('../config');
 
-const parseAuthHeader = request => request.headers.authorization && request.headers.authorization.split(' ')
+const parseAuthHeader = headers => headers.authorization && headers.authorization.split(' ')
 
 module.exports = fp(async (app, opts) => {
   app.decorate('verifyBearerToken', async (request, reply) => {
@@ -22,8 +20,8 @@ module.exports = fp(async (app, opts) => {
   app.decorate('verifyJwt', async (request, reply) => {
     const [type, token] = parseAuthHeader(request.headers)
 
-    const payload = jwt.verify(token, config.server.secret)
+    const payload = app.decodeJwt(token)
 
-    app.decorateRequest('user', payload)
+    request.user = payload
   })
 })
