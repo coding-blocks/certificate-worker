@@ -6,6 +6,9 @@ export default [
     path: '/login'
   },
   {
+    path: '/layouts/:id'
+  },
+  {
     path: '/layouts'
   },
   {
