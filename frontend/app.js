@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import ActionComponent from '~/components/common/action-component';
 import { useRefreshUser } from '~/services/session';
 import router from '~/router';
 
@@ -23,13 +24,15 @@ export default () => {
     <Router>
       <Switch>
         {router.map((route, i) => {
-          const Page = require(`./pages${route.path.replaceAll(':', '_')}`).default
+          const Page = require(`./pages${route.path.replaceAll(':', '_')}`)
           const Layout = require(`./layouts/${route.layout || 'base'}`).default
           
           return (
             <Route path={route.path} key={i}>
               <Layout>
-                <Page />
+                <ActionComponent action={Page.action}>
+                  <Page.default />
+                </ActionComponent>
               </Layout>
             </Route>
           )
