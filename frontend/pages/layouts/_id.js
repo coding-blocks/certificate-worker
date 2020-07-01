@@ -1,17 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Api from '~/services/api';
+import { getLayout } from '~/store/getters/layouts';
+import { loadLayout } from '~/store/actions/layouts';
+
 
 export default () => {
   const params = useParams()
-  const [layout, setLayout] = React.useState(null)
-
-  React.useEffect(() => {
-    (async () => {
-      const resp = await Api.get(`layouts/${params.id}`)
-      setLayout(resp.data)
-    })()
-  }, []);
+  const layout = useSelector(getLayout(params.id))
 
   return (
     <div>
@@ -19,3 +15,5 @@ export default () => {
     </div>
   )
 }
+
+export const action = loadLayout
