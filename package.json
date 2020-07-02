@@ -8,7 +8,7 @@
     "frontend:dev": "./node_modules/.bin/webpack-dev-server --mode development",
     "start": "cross-env NODE_PATH=production node src/app.js",
     "start:dev": "node src/app.js",
-    "watch": "nodemon src/app.js",
+    "watch": "nodemon --ignore frontend/ --ignore node_modules/ src/app.js",
     "test": "node src/test.js"
   },
   "dependencies": {

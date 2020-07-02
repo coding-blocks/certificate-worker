@@ -10,32 +10,32 @@ export default () => {
   const user = useSelector(getUser())
 
   return (
-    <header>
-      <nav className='main-nav'>
-        <span className='logo-parent'>
-          <Link to='/'>
-            <img src='https://codingblocks.com/assets/images/cb/cblogo.png' alt='online-logo' className='nav-logo pointer' />
-          </Link>
-        </span>
-        <ul className='nav-list'>
-          <li className='nav-items pointer'>
+    <nav className='main-nav'>
+      <span className='logo-parent'>
+        <Link to='/'>
+          <img src='https://codingblocks.com/assets/images/cb/cblogo.png' alt='online-logo' className='nav-logo pointer' />
+        </Link>
+      </span>
+      <ul className='nav-list'>
+        <li className='nav-items pointer'>
+          <Link to='/layouts'>
             Layouts
-          </li>
-          {isAuthenticated && <li className='nav-items pointer'>
-            Hi,<mark>{ user.firstname }</mark>
-          </li>}
-          {isAuthenticated && <li className='nav-items pointer'>
-            <button className='button-solid white' onClick={() => dispatch(logout())}>
-              Logout
-            </button>
-          </li>}
-          {!isAuthenticated && <li className='nav-items pointer'>
-            <Link className='button-solid white' to='/login'>
-              Login
-            </Link>
-          </li>}
-        </ul>
-      </nav>
-    </header>
+          </Link>
+        </li>
+        {isAuthenticated && <li className='nav-items pointer'>
+          Hi,<mark>{ user.firstname }</mark>
+        </li>}
+        {isAuthenticated && <li className='nav-items pointer'>
+          <button className='button-solid white' onClick={() => dispatch(logout())}>
+            Logout
+          </button>
+        </li>}
+        {!isAuthenticated && <li className='nav-items pointer'>
+          <Link className='button-solid white' to='/login'>
+            Login
+          </Link>
+        </li>}
+      </ul>
+    </nav>
   )
 }

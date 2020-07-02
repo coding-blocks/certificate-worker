@@ -10,7 +10,9 @@ export default props => {
   return (
     <div>
       <Navbar />
-      {props.children}
+      <div className='container'>
+        {props.children}
+      </div>
     </div>
   )
 }

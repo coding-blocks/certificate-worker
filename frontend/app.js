@@ -13,13 +13,18 @@ import router from '~/router';
 
 export default () => {
   const refreshUser = useRefreshUser(useDispatch())
+  const [initializing, setInitializing] = React.useState(true)
 
   React.useEffect(() => {
     refreshUser()
     window.addEventListener('storage', refreshUser)
 
+    setInitializing(false)
+
     return () => window.removeEventListener('storage', refreshUser)
   }, [])
+
+  if (initializing) return <></>
 
   return (
     <Router>
