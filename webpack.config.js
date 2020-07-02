@@ -1,5 +1,6 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
@@ -53,6 +54,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': Object.keys(process.env).reduce((acc, curr) => { acc[curr] = JSON.stringify(process.env[curr]); return acc }, {})
+    }),
     new HtmlWebpackPlugin({
       template: __dirname + "/frontend/index.html",
       filename: "index.html",
