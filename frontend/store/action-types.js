@@ -1,5 +1,6 @@
 // session
 export const SET_USER = 'session/SET_USER'
+export const LOGOUT = 'session/LOGOUT'
 
 // layouts
 export const LOAD_LAYOUTS = 'layouts/LOAD_LAYOUTS'

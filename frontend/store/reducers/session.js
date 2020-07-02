@@ -1,4 +1,4 @@
-import { SET_USER } from '~/store/action-types';
+import { SET_USER, LOGOUT } from '~/store/action-types';
 
 const initialState = {
   isAuthenticated: false,
@@ -12,6 +12,13 @@ export default (state = initialState, action) => {
         ...state,
         isAuthenticated: !!action.payload.id,
         user: action.payload
+      }
+    case LOGOUT:
+      localStorage.removeItem('certificate-jwt')
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {}
       }
     default:
       return state
