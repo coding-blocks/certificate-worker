@@ -11,6 +11,8 @@ module.exports = {
     url: process.env.DB_URL || 'mongodb://localhost/certificates'
   },
   server: {
+    api_url: process.env.API_URL || "http://localhost:4242",
+    frontend_url: process.env.FRONTEND_URL || "http://localhost:8080",
     port: process.env.PORT || 4242,
     secret: process.env.SECRET || 'securityFTW'
   },

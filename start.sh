@@ -1,3 +1,5 @@
 #!/bin/bash
 
-/bin/wait-for-it.sh $host:$port -- yarn start
+yarn frontend:build
+nginx
+yarn start

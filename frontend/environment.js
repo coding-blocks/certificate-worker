@@ -1,9 +1,9 @@
 const config = require('../src/config');
 
 const ENV = {
-  PUBLIC_URL: 'http://localhost:8080',
+  PUBLIC_URL: config.server.frontend_url,
   API: {
-    HOST: 'http://localhost:4242'
+    HOST: config.server.api_url
   },
   ONEAUTH: {
     URL: config.oneauth.url,
