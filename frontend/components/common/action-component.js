@@ -11,7 +11,7 @@ export default props => {
   React.useEffect(() => {
     props.action && (async () => {
       setLoading(true)
-      await dispatch(props.action(params))
+      await props.action({ dispatch, params })
       setLoading(false)
     })()
   }, [])

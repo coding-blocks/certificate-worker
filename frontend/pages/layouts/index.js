@@ -21,4 +21,4 @@ export default () => {
   )
 }
 
-export const action = loadLayouts
+export const action = ({ dispatch }) => dispatch(loadLayouts())

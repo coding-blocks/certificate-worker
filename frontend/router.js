@@ -6,10 +6,12 @@ export default [
     path: '/login'
   },
   {
-    path: '/layouts/:id'
+    path: '/layouts/:id',
+    authenticated: true
   },
   {
-    path: '/layouts'
+    path: '/layouts',
+    authenticated: true
   },
   {
     path: '/'

@@ -16,4 +16,4 @@ export default () => {
   )
 }
 
-export const action = loadLayout
+export const action = ({ dispatch, params }) => dispatch(loadLayout(params.id))

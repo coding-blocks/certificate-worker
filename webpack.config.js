@@ -1,6 +1,7 @@
 const path = require("path");
 const autoprefixer = require("autoprefixer");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = {
   entry: "./frontend/index.js",
@@ -56,6 +57,16 @@ module.exports = {
       template: __dirname + "/frontend/index.html",
       filename: "index.html",
       inject: "body",
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      // add errors to webpack instead of warnings
+      failOnError: true,
+      // allow import cycles that include an asyncronous import,
+      // e.g. via import(/* webpackMode: "weak" */ './file.js')
+      allowAsyncCycles: false,
+      // set the current working directory for displaying module paths
+      cwd: __dirname + "/frontend",
     }),
   ],
   devServer: {

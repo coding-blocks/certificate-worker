@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import AuthenticatedRoute from '~/components/common/authenticated-route';
 import ActionComponent from '~/components/common/action-component';
 import { useRefreshUser } from '~/services/session';
 import router from '~/router';
@@ -26,15 +27,16 @@ export default () => {
         {router.map((route, i) => {
           const Page = require(`./pages${route.path.replaceAll(':', '_')}`)
           const Layout = require(`./layouts/${route.layout || 'base'}`).default
+          const RouteComponent = route.authenticated ? AuthenticatedRoute : Route
           
           return (
-            <Route path={route.path} key={i}>
+            <RouteComponent path={route.path} key={i}>
               <Layout>
                 <ActionComponent action={Page.action}>
                   <Page.default />
                 </ActionComponent>
               </Layout>
-            </Route>
+            </RouteComponent>
           )
         })}
       </Switch>

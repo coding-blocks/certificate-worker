@@ -8,7 +8,7 @@ export const loadLayouts = () => ({
     }
   }
 })
-export const loadLayout = ({ id }) => ({
+export const loadLayout = id => ({
   type: LOAD_LAYOUT,
   payload: {
     request: {
