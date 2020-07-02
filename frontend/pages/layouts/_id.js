@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getLayout } from '~/store/getters/layouts';
 import { loadLayout } from '~/store/actions/layouts';
-
+import LayoutEditor from '~/components/layouts/LayoutEditor';
 
 export default () => {
   const params = useParams()
@@ -11,7 +11,14 @@ export default () => {
 
   return (
     <div>
-      <h1>{layout && layout._id}</h1>
+      <div className='container'>
+        <h2>{layout.name}</h2>
+      </div>
+      <div className='mt-4'>
+        <LayoutEditor 
+          layout={layout}
+        />
+      </div>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { LOAD_LAYOUTS, LOAD_LAYOUT } from '~/store/action-types';
+import { LOAD_LAYOUTS, LOAD_LAYOUT, UPDATE_LAYOUT } from '~/store/action-types';
 
 export const loadLayouts = () => ({
   type: LOAD_LAYOUTS,
@@ -13,6 +13,16 @@ export const loadLayout = id => ({
   payload: {
     request: {
       url: `layouts/${id}`
+    }
+  }
+})
+export const updateLayout = (id, layout) => ({
+  type: UPDATE_LAYOUT,
+  payload: {
+    request: {
+      url: `layouts/${id}`,
+      method: 'PATCH',
+      data: layout
     }
   }
 })

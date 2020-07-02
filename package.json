@@ -39,6 +39,7 @@
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "@monaco-editor/react": "^3.4.0",
     "autoprefixer": "^9.8.4",
     "babel-loader": "^8.1.0",
     "circular-dependency-plugin": "^5.2.0",

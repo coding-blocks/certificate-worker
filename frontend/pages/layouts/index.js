@@ -8,7 +8,7 @@ export default () => {
   const layouts = useSelector(getLayouts())
 
   return (
-    <div className='pt-5'>
+    <div className='container'>
       <h2>Layouts !</h2>
       {layouts.map((layout, i) => 
         <div key={i} className='mt-4'>

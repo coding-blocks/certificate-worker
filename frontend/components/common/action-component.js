@@ -6,7 +6,7 @@ import Loading from '~/components/common/loading';
 export default props => {
   const params = useParams()
   const dispatch = useDispatch()
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
     props.action && (async () => {
