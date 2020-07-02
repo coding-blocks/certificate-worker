@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports = {
-  sendCallback(callbackUrl, payload) {
-    return axios.post(callbackUrl, payload)
+  sendCallback(callbackUrl, payload, method='post') {
+    return axios[method](callbackUrl, payload)
   }
 }

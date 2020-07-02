@@ -24,6 +24,8 @@ COPY start.sh /bin/start.sh
 COPY wait-for-it.sh /bin/wait-for-it.sh
 COPY nginx.conf /etc/nginx/conf.d/certificate.conf
 RUN mkdir -p /run/nginx
-COPY . .
+COPY src ./src
+COPY webpack.config.js ./webpack.config.js
+COPY frontend ./frontend
 
 CMD /bin/start.sh

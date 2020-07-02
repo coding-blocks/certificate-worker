@@ -19,9 +19,16 @@ module.exports = {
       }
     })
 
-    return {
-      jwt: app.encodeJwt(userResp.data),
-      user: userResp.data
+    if (['admin', 'employee'].includes(userResp.data.role)) {
+      return {
+        jwt: app.encodeJwt(userResp.data),
+        user: userResp.data
+      }
+    }
+
+    throw {
+      statusCode: 403,
+      message: 'Admin Privilidges required'
     }
   }
 }

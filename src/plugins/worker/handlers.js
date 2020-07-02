@@ -62,7 +62,7 @@ module.exports = {
       certificateId: data.certificateId,
       url: linkForKey(destKeyName),
       salt: data.salt
-    })
+    }, method='patch')
 
     // 4. Cleanup
     fs.unlinkSync(path)
