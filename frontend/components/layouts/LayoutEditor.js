@@ -1,19 +1,23 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ControlledEditor } from '@monaco-editor/react';
-import { updateLayout, loadLayout } from '~/store/actions/layouts';
+import { updateLayout, createLayout } from '~/store/actions/layouts';
 
 export default props => {
   const { layout } = props
   const dispatch = useDispatch()
-  const [editingLayout, setEditingLayout] = React.useState({ name: layout.name, content: layout.content })
+  const [editingLayout, setEditingLayout] = React.useState({ name: layout.name, content: layout.content, params: layout.params })
   const [loading, setLoading] = React.useState(false)
 
   const saveLayout = async () => {
     try {
       setLoading(true)
-      await dispatch(updateLayout(layout._id, editingLayout))
-      await dispatch(loadLayout(layout._id))
+      if (layout._id) {
+        await dispatch(updateLayout(layout._id, editingLayout))
+      } else {
+        const res = await dispatch(createLayout(editingLayout))
+        props.onAfterCreate && props.onAfterCreate(res)
+      }
     } catch (err) {
       console.log(err)
     } finally {

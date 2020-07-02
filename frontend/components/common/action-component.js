@@ -9,9 +9,9 @@ export default props => {
   const [loading, setLoading] = React.useState(true)
 
   React.useEffect(() => {
-    props.action && (async () => {
+    (async () => {
       setLoading(true)
-      await props.action({ dispatch, params })
+      props.action && await props.action({ dispatch, params })
       setLoading(false)
     })()
   }, [])

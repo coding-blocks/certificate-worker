@@ -60,6 +60,7 @@ module.exports = {
   CREATE: {
     body: {
       type: 'object',
+      required: ['name', 'params', 'content'],
       properties: {
         name: {
           type: 'string'
