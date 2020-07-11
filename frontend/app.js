@@ -30,7 +30,7 @@ export default () => {
     <Router>
       <Switch>
         {router.map((route, i) => {
-          const Page = require(`./pages${route.path.replaceAll(':', '_')}`)
+          const Page = require(`./pages${route.path.replace(/\:/g, '_')}`)
           const Layout = require(`./layouts/${route.layout || 'base'}`).default
           const RouteComponent = route.authenticated ? AuthenticatedRoute : Route
           
