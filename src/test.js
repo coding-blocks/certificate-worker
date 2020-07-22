@@ -22,9 +22,9 @@ const connectionPromise = new Promise ((resolve, reject) => {
 const eq = x => y => x==y
 
 connectionPromise.then(conn => {
-  fs.readdir(__dirname + '/templates', (err, files) => {
-    if (!err) {
-      files.forEach(file => {
+  // fs.readdir(__dirname + '/templates', (err, files) => {
+  //   if (!err) {
+  //     files.forEach(file => {
         conn.publish(config.amqp.queuename, {
           secret: 'somesecretshitshere',
           data: {
@@ -41,15 +41,15 @@ connectionPromise.then(conn => {
               end: 1548416990,
               // domain: "hellointern"
             },
-            template: file.split('.')[0]
+            template: 'algo_cpp'
           },
           callback: 'evil.com'
         })
-      })
-    } else {
-      console.log(err)
-    }
-  })
+  //     })
+  //   } else {
+  //     console.log(err)
+  //   }
+  // })
 })
 
 

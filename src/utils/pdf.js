@@ -7,7 +7,7 @@ module.exports = {
             const browser = await puppeteer.launch({
                 executablePath: process.env.CHROMIUM_PATH,
                 headless: true,
-                args: ["--no-sandbox"]
+                args: ["--no-sandbox", "--disable-web-security"]
             });
 
             const page = await browser.newPage();

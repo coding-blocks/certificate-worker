@@ -5,10 +5,11 @@
   "author": "abhishek97",
   "license": "MIT",
   "scripts": {
-    "static": "http-server ./src/assets/ -p 8000 --cors",
+    "frontend:dev": "./node_modules/.bin/webpack-dev-server --mode development",
+    "frontend:build": "./node_modules/.bin/webpack --mode production",
     "start": "cross-env NODE_PATH=production node src/app.js",
     "start:dev": "node src/app.js",
-    "watch": "nodemon src/app.js",
+    "watch": "nodemon --ignore frontend/ --ignore node_modules/ src/app.js",
     "test": "node src/test.js"
   },
   "dependencies": {
@@ -20,10 +21,12 @@
     "fastify-amqp": "^0.3.0",
     "fastify-auth": "^0.7.2",
     "fastify-autoload": "^1.2.2",
+    "fastify-cors": "^3.0.3",
     "fastify-mongodb": "^2.0.0",
     "fastify-plugin": "^1.6.1",
+    "fastify-static": "^2.7.0",
     "handlebars-pdf": "^1.0.1",
-    "http-server": "^0.12.3",
+    "jsonwebtoken": "^8.5.1",
     "minio": "^7.0.0",
     "moment-timezone": "^0.5.26",
     "mongod": "^2.0.0",
@@ -32,5 +35,28 @@
     "puppeteer": "^3.1.0",
     "raven": "^2.6.4",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "@monaco-editor/react": "^3.4.0",
+    "autoprefixer": "^9.8.4",
+    "babel-loader": "^8.1.0",
+    "circular-dependency-plugin": "^5.2.0",
+    "css-loader": "^3.6.0",
+    "html-webpack-plugin": "^4.3.0",
+    "postcss-loader": "^3.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-axios-middleware": "^4.0.1",
+    "redux-devtools": "^3.5.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }

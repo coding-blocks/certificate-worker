@@ -2,7 +2,6 @@ const Fastify = require('fastify');
 const AutoLoad = require('fastify-autoload');
 const path = require('path');
 const config = require('./config');
-const { request } = require('http');
 
 const app = Fastify({
   logger: process.env.NODE_ENV !== 'production'
@@ -20,6 +19,13 @@ app
     pass: config.amqp.password
   })
   .register(require('fastify-auth'))
+  .register(require('fastify-static'), {
+    root: path.join(__dirname, 'assets'),
+    prefix: '/assets'
+  })
+  .register(require('fastify-cors'), {
+    origin: true
+  })
   // Load all the plugins
   .register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
