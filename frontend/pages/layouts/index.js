@@ -12,22 +12,27 @@ export default () => {
   const dispatch = useDispatch()
   const pageSize = 10
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const isLastPage = currentPage*pageSize > layouts.length
 
-  function loadMoreLayouts(){
-    if (!hasMore || isLoading) {
+  const loadMoreLayouts = async () => {
+    if (isLastPage || isLoading) {
       return;
     }
-    setIsLoading(true);
-    dispatch(loadLayouts({offset: (currentPage-1) * pageSize, limit: pageSize}))
-        .then(() => setIsLoading(false))
-    if (isLastPage) {
-      setHasMore(false);
+    
+    try {
+      setIsLoading(true);
+      await dispatch(loadLayouts({
+        offset: (currentPage + 1) * pageSize, 
+        limit: pageSize
+      }))
+      setCurrentPage(currentPage + 1)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
     }
-    setCurrentPage(isLastPage ? currentPage : currentPage + 1);
   }
 
   return (
@@ -40,7 +45,7 @@ export default () => {
       </div>
       <InfiniteScroll
         pageStart={1}
-        hasMore={hasMore}
+        hasMore={!isLastPage}
         loadMore={loadMoreLayouts}
       >
         {layouts.map((layout, i) =>
@@ -55,4 +60,4 @@ export default () => {
   )
 }
 
-export const action = ({ dispatch }) => dispatch(loadLayouts({}))
+export const action = ({ dispatch }) => dispatch(loadLayouts())
