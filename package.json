@@ -34,6 +34,7 @@
     "phantomjs-prebuilt": "^2.1.16",
     "puppeteer": "^3.1.0",
     "raven": "^2.6.4",
+    "react-infinite-scroller": "^1.2.4",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

@@ -1,4 +1,10 @@
 module.exports = {
+  GET: {
+    querystring: {
+      offset: {type: 'number'},
+      limit: {type: 'number'}
+    }
+  },
   GETById: {
     response: {
       404: {

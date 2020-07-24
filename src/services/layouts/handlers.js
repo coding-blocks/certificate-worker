@@ -1,8 +1,12 @@
 module.exports = {
   GET: app => async (request, reply) => {
+    const offset = request.query.offset ? parseInt(request.query.offset, 10) : 0
+    const limit = request.query.limit ? parseInt(request.query.limit,  10) : 10
     return app.mongo.db
       .collection('layouts')
       .find()
+      .skip(offset)
+      .limit(limit)
       .toArray()
   },
   GETById: app => async (request, reply) => {
