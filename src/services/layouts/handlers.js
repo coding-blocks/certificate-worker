@@ -4,7 +4,9 @@ module.exports = {
     const limit = request.query.limit ? parseInt(request.query.limit,  10) : 10
     return app.mongo.db
       .collection('layouts')
-      .find().skip(offset).limit(limit)
+      .find()
+      .skip(offset)
+      .limit(limit)
       .toArray()
   },
   GETById: app => async (request, reply) => {
