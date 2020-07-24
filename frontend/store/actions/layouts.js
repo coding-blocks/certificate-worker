@@ -1,10 +1,10 @@
 import { LOAD_LAYOUTS, LOAD_LAYOUT, UPDATE_LAYOUT, CREATE_LAYOUT } from '~/store/action-types';
 
-export const loadLayouts = () => ({
+export const loadLayouts = (offset = 0, limit = 10) => ({
   type: LOAD_LAYOUTS,
   payload: {
     request: {
-      url: 'layouts'
+      url: `layouts?offset=${offset}&limit=${limit}`
     }
   }
 })

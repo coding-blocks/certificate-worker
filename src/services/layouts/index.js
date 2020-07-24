@@ -6,7 +6,7 @@ module.exports = async (app, opts) => {
     app.verifyBearerToken,
     app.verifyJwt,
   ]))
-  app.get('/', handlers.GET(app))
+  app.get('/', { schema: schema.GET }, handlers.GET(app))
   app.get('/:id', { schema: schema.GETById }, handlers.GETById(app))
   app.patch('/:id', { schema: schema.UPDATE }, handlers.PATCH(app))
   app.post('/', { schema: schema.CREATE }, handlers.POST(app))
