@@ -1,8 +1,12 @@
 module.exports = {
   GET: {
     querystring: {
-      offset: {type: 'number'},
-      limit: {type: 'number'}
+      offset: {
+        type: 'number'
+      },
+      limit: {
+        type: 'number'
+      }
     }
   },
   GETById: {
@@ -32,6 +36,12 @@ module.exports = {
         },
         content: {
           type: 'string'
+        },
+        height: {
+          type: 'number'
+        },
+        width: {
+          type: 'number'
         }
       }
     },
@@ -56,6 +66,12 @@ module.exports = {
               },
               content: {
                 type: 'string'
+              },
+              height: {
+                type: 'number'
+              },
+              width: {
+                type: 'number'
               }
             }
           }
@@ -79,6 +95,12 @@ module.exports = {
         },
         content: {
           type: 'string'
+        },
+        height: {
+          type: 'number'
+        },
+        width: {
+          type: 'number'
         }
       }
     },
@@ -103,6 +125,12 @@ module.exports = {
               },
               content: {
                 type: 'string'
+              },
+              height: {
+                type: 'number'
+              },
+              width: {
+                type: 'number'
               }
             }
           }
