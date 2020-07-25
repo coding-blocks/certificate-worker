@@ -10,8 +10,8 @@ export default props => {
     name: layout.name,
     content: layout.content,
     params: layout.params,
-    height: layout.height ? layout.height : 408,
-    width: layout.width ? layout.width : 842
+    height: layout.height || 408,
+    width: layout.width || 842
   })
   const [loading, setLoading] = React.useState(false)
 
@@ -42,14 +42,14 @@ export default props => {
               value={editingLayout.name}
               onChange={e => setEditingLayout({ ...editingLayout, name: e.target.value})} 
             />
-            <label>Width</label>
+            <label className='ml-2'>Width:&nbsp;</label>
             <input
                 className='input-text col-lg-2'
                 type='number'
                 value={editingLayout.width}
                 onChange={e => setEditingLayout({ ...editingLayout, width: e.target.value})}
             />
-            <label>Height</label>
+            <label className='ml-2'>Height:&nbsp;</label>
             <input
                 className='input-text col-lg-2'
                 type='number'
@@ -75,7 +75,7 @@ export default props => {
           />
         </div>
         <div className='col-6'>
-          <iframe srcDoc={editingLayout.content} width={editingLayout.width} height={editingLayout.height}>
+          <iframe srcDoc={editingLayout.content} className='w-100' style={{height: `${50*editingLayout.height/editingLayout.width}vw`}}>
           </iframe>
         </div>
       </div>
