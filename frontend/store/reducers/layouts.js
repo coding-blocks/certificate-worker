@@ -16,12 +16,11 @@ export default (state = initialState, action) => {
         }
       }
     case `${LOAD_LAYOUTS}_SUCCESS`:
+      const newLayouts = listToMap(action.payload.data)
+      const layouts = action.meta.previousAction.payload.unloadAll ? newLayouts : {...state.layouts, ...newLayouts}
       return {
         ...state,
-        layouts: {
-          ...state.layouts,
-          ...listToMap(action.payload.data)
-        }
+        layouts
       }
     case `${UPDATE_LAYOUT}_SUCCESS`:
     case `${CREATE_LAYOUT}_SUCCESS`:

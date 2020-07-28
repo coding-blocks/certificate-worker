@@ -12,22 +12,51 @@ export default () => {
   const dispatch = useDispatch()
   const pageSize = 10
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState('')
   const isLastPage = currentPage*pageSize > layouts.length
 
-  function loadMoreLayouts(){
-    if (!hasMore || isLoading) {
+  const searchLayouts = async (q) => {
+    if (q === query || isLoading) {
+      return
+    }
+
+    try {
+      setIsLoading(true);
+      await dispatch(loadLayouts({
+        q,
+        offset: 0,
+        limit: pageSize,
+        unloadAll: true
+      }))
+    } catch(err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+      setCurrentPage(0)
+      setQuery(q)
+    }
+  }
+
+  const loadMoreLayouts = async () => {
+    if (isLastPage || isLoading) {
       return;
     }
-    setIsLoading(true);
-    dispatch(loadLayouts({offset: (currentPage-1) * pageSize, limit: pageSize}))
-        .then(() => setIsLoading(false))
-    if (isLastPage) {
-      setHasMore(false);
+    
+    try {
+      setIsLoading(true);
+      await dispatch(loadLayouts({
+        q: query,
+        offset: (currentPage + 1) * pageSize, 
+        limit: pageSize
+      }))
+      setCurrentPage(currentPage + 1)
+    } catch (err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
     }
-    setCurrentPage(isLastPage ? currentPage : currentPage + 1);
   }
 
   return (
@@ -38,9 +67,18 @@ export default () => {
           Add +
         </Link>
       </div>
+      <div className='pull-right'>
+        <input
+            className='input-text'
+            value={query}
+            placeholder="Search Layouts..."
+            onChange={e => searchLayouts(e.target.value)}
+            style={{fontSize: '20px', marginBottom: '10px', marginTop: '10px'}}
+        />
+      </div>
       <InfiniteScroll
         pageStart={1}
-        hasMore={hasMore}
+        hasMore={!isLastPage}
         loadMore={loadMoreLayouts}
       >
         {layouts.map((layout, i) =>
@@ -55,4 +93,4 @@ export default () => {
   )
 }
 
-export const action = ({ dispatch }) => dispatch(loadLayouts({}))
+export const action = ({ dispatch }) => dispatch(loadLayouts())

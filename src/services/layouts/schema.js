@@ -1,6 +1,9 @@
 module.exports = {
   GET: {
     querystring: {
+      q: {
+        type: 'string'
+      },
       offset: {
         type: 'number'
       },
