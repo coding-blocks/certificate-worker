@@ -14,7 +14,30 @@ export default () => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState('')
   const isLastPage = currentPage*pageSize > layouts.length
+
+  const searchLayouts = async (q) => {
+    if (q === query || isLoading) {
+      return
+    }
+
+    try {
+      setIsLoading(true);
+      await dispatch(loadLayouts({
+        q,
+        offset: 0,
+        limit: pageSize,
+        unloadAll: true
+      }))
+    } catch(err) {
+      console.log(err)
+    } finally {
+      setIsLoading(false)
+      setCurrentPage(0)
+      setQuery(q)
+    }
+  }
 
   const loadMoreLayouts = async () => {
     if (isLastPage || isLoading) {
@@ -24,6 +47,7 @@ export default () => {
     try {
       setIsLoading(true);
       await dispatch(loadLayouts({
+        q: query,
         offset: (currentPage + 1) * pageSize, 
         limit: pageSize
       }))
@@ -42,6 +66,15 @@ export default () => {
         <Link to='layouts/new' className='button-solid'>
           Add +
         </Link>
+      </div>
+      <div className='pull-right'>
+        <input
+            className='input-text'
+            value={query}
+            placeholder="Search Layouts..."
+            onChange={e => searchLayouts(e.target.value)}
+            style={{fontSize: '20px', marginBottom: '10px', marginTop: '10px'}}
+        />
       </div>
       <InfiniteScroll
         pageStart={1}

@@ -1,10 +1,11 @@
 module.exports = {
   GET: app => async (request, reply) => {
-    const offset = request.query.offset ? parseInt(request.query.offset, 10) : 0
-    const limit = request.query.limit ? parseInt(request.query.limit,  10) : 10
+    const offset = +request.query.offset || 0
+    const limit = +request.query.limit || 10
+    const q = request.query.q || ''
     return app.mongo.db
       .collection('layouts')
-      .find()
+      .find({ name: { $regex: '.*' + q + '.*', $options : 'i'}})
       .skip(offset)
       .limit(limit)
       .toArray()
