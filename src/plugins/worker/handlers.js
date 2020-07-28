@@ -79,8 +79,8 @@ module.exports = {
       template: layout.content,
       context: data.substitutions,
       options: {
-        height: '408px', 
-        width: '842px',
+        height: `${+layout.height || 408}px`,
+        width: `${+layout.width || 842}px`,
         printBackground: true,
         path: outPath  
       }
