@@ -41,7 +41,7 @@ connectionPromise.then(conn => {
               end: 1548416990,
               // domain: "hellointern"
             },
-            template: 'algo_cpp'
+            template: 'faang'
           },
           callback: 'evil.com'
         })
