@@ -65,7 +65,7 @@ module.exports = {
     }, method='patch')
 
     // 4. Cleanup
-    fs.unlinkSync(path)
+    fs.unlinkSync(outPath)
   },
   GenerateFromLayout: app => async data => {
     const layout = await app.mongo.db
