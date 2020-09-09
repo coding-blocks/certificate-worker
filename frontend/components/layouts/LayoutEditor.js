@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ControlledEditor } from '@monaco-editor/react';
 import { updateLayout, createLayout } from '~/store/actions/layouts';
+import QueryModal from './QueryModal'
 
 export default props => {
   const { layout } = props
@@ -31,8 +32,19 @@ export default props => {
     }
   }
 
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <div>
+      <QueryModal isOpen={isModalOpen} closeModal={closeModal} layout={layout} />
       <div className='container'>
         <div className='row'>
           <div className='d-flex pl-0 col-12 col-md-5 input-group align-items-center'>
@@ -40,21 +52,21 @@ export default props => {
             <input
               className='input-text col-lg-4'
               value={editingLayout.name}
-              onChange={e => setEditingLayout({ ...editingLayout, name: e.target.value})} 
+              onChange={e => setEditingLayout({ ...editingLayout, name: e.target.value })}
             />
             <label className='ml-2'>Width:&nbsp;</label>
             <input
-                className='input-text col-lg-2'
-                type='number'
-                value={editingLayout.width}
-                onChange={e => setEditingLayout({ ...editingLayout, width: e.target.value})}
+              className='input-text col-lg-2'
+              type='number'
+              value={editingLayout.width}
+              onChange={e => setEditingLayout({ ...editingLayout, width: e.target.value })}
             />
             <label className='ml-2'>Height:&nbsp;</label>
             <input
-                className='input-text col-lg-2'
-                type='number'
-                value={editingLayout.height}
-                onChange={e => setEditingLayout({ ...editingLayout, height: e.target.value})}
+              className='input-text col-lg-2'
+              type='number'
+              value={editingLayout.height}
+              onChange={e => setEditingLayout({ ...editingLayout, height: e.target.value })}
             />
           </div>
           <div className='d-flex col-12 col-md-4 col-lg-1 justify-content-center'>
@@ -62,23 +74,28 @@ export default props => {
               {loading ? 'Saving' : 'Save'}
             </button>
           </div>
+          <div className='d-flex col-12 col-md-4 col-lg-1 justify-content-center'>
+            <button className='button-solid' disabled={loading} onClick={openModal}>
+              Generate Certificate
+            </button>
+          </div>
         </div>
       </div>
       <div className='row no-gutters mt-4'>
         <div className='col-6'>
-          <ControlledEditor 
+          <ControlledEditor
             height='75vh'
             language='handlebars'
             value={editingLayout.content}
-            onChange={(ev, value) => setEditingLayout({ ...editingLayout, content: value})}
+            onChange={(ev, value) => setEditingLayout({ ...editingLayout, content: value })}
             theme='dark'
           />
         </div>
         <div className='col-6'>
-          <iframe srcDoc={editingLayout.content} className='w-100' style={{height: `${50*editingLayout.height/editingLayout.width}vw`}}>
+          <iframe srcDoc={editingLayout.content} className='w-100' style={{ height: `${50 * editingLayout.height / editingLayout.width}vw` }}>
           </iframe>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
