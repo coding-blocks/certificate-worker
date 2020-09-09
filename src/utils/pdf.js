@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 
 module.exports = {
-
 	createPdf: async function(html, options) {
 	    try {
             const browser = await puppeteer.launch({

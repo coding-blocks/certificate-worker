@@ -1,8 +1,8 @@
+require('dotenv').config();
 const Fastify = require('fastify');
 const AutoLoad = require('fastify-autoload');
 const path = require('path');
 const config = require('./config');
-require('dotenv').config();
 
 const app = Fastify({
   logger: process.env.NODE_ENV !== 'production'
