@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ControlledEditor } from '@monaco-editor/react';
 import { updateLayout, createLayout } from '~/store/actions/layouts';
-import QueryModal from './QueryModal'
+import GenerateNowModal from './GenerateNowModal'
 
 export default props => {
   const { layout } = props
@@ -44,7 +44,7 @@ export default props => {
 
   return (
     <div>
-      <QueryModal isOpen={isModalOpen} closeModal={closeModal} layout={layout} />
+      <GenerateNowModal isOpen={isModalOpen} closeModal={closeModal} layout={layout} />
       <div className='container'>
         <div className='row'>
           <div className='d-flex pl-0 col-12 col-md-5 input-group align-items-center'>
