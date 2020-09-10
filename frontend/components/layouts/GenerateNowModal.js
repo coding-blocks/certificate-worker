@@ -61,13 +61,13 @@ const QueryModal = (props) => {
                 <h3>Certificate Details</h3>
 
                 {layout.params.map((param, i) => {
-                    return (<div key={i}>
-                        {param} :{` `}
-                        <input className="input-text col-lg-4" type="text" name={param} onChange={handleChange} value={substitutions[param]} />
-                    </div>)
+                    return <div className="mt-3" key={i}>
+                        <span>{param}</span>
+                        <input className="input-text" type="text" name={param} onChange={handleChange} value={substitutions[param]} />
+                    </div>
                 })}
 
-                <div className="button-solid white">
+                <div className="button-solid white mt-3">
                     <button 
                         type="submit" 
                         onClick={submitDetails}
@@ -78,7 +78,7 @@ const QueryModal = (props) => {
                 </div>
 
                 <div>
-                    {certificateUrl && <a className="red" href={certificateUrl}>{certificateUrl}</a>}
+                    {certificateUrl && <a className="red mt-3" href={certificateUrl}>{certificateUrl}</a>}
                 </div>
             </div>
         </Modal>

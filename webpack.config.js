@@ -8,8 +8,8 @@ module.exports = {
   entry: "./frontend/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
-    chunkFilename: "[id].js",
+    filename: "bundle-[contenthash].js",
+    chunkFilename: "[id]-[chunkhash].js",
     publicPath: "/"
   },
   resolve: {
