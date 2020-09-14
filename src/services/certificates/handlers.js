@@ -41,10 +41,14 @@ module.exports = {
       message: 'Layout Not Found'
     }
 
+    const destKeyName = `${v4()}.pdf`
     const outPath = path.join(__dirname, '../../certification/' + v4() + ".pdf")
     const document = {
       template: layout.content,
-      context: request.body.substitutions,
+      context: {
+        ...request.body.substitutions,
+        pdfFileName: destKeyName
+      },
       options: {
         height: `${+layout.height || 408}px`,
         width: `${+layout.width || 842}px`,
@@ -56,7 +60,6 @@ module.exports = {
     const template = Handlebars.compile(document.template);
     const html = template(document.context);
     await pdf.createPdf(html, document.options);
-    const destKeyName = `${v4()}.pdf`
     await uploadToMinio(outPath, destKeyName)
     const url = linkForKey(destKeyName)
 
