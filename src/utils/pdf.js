@@ -16,7 +16,10 @@ module.exports = {
             });
             await page.emulateMedia('screen');
 
-            await page.pdf(options);
+            await page.pdf({
+                pageRanges: '1',
+                ...options
+            });
             await browser.close();
 	    }
 	    catch(err) {
