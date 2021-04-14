@@ -25,6 +25,7 @@ COPY wait-for-it.sh /bin/wait-for-it.sh
 COPY nginx.conf /etc/nginx/conf.d/certificate.conf
 RUN mkdir -p /run/nginx
 COPY src ./src
+RUN mkdir -p src/certification
 COPY webpack.config.js ./webpack.config.js
 COPY frontend ./frontend
 
