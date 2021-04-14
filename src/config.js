@@ -1,8 +1,8 @@
 module.exports = {
   amqp: {
     host: process.env.host || "localhost",
-    user: process.env.login || "test",
-    password: process.env.password || "test",
+    user: process.env.login || "amoeba",
+    password: process.env.password || "123456",
     port: process.env.port || "5672",
     queuename: process.env.queuename || 'certificate-queue'
   },
@@ -22,7 +22,7 @@ module.exports = {
     client_secret: process.env.CLIENT_SECRET
   },
   minio: {
-    url: process.env.monioUrl || "minio-i.codingblocks.com",
+    url: process.env.monioUrl || "minio.codingblocks.com",
     bucketName: process.env.minioBucketName || "bucket",
     accessKey: process.env.minioAccessKey || "bleh",
     secretKey: process.env.minioSecretKey || "WontWork"
