@@ -19,6 +19,6 @@ module.exports = {
     })
   },
   linkForKey (key) {
-    return `https://minio.cb.lk/${config.minio.bucketName}/${key}`
+    return `https://minio.codingblocks.com/${config.minio.bucketName}/${key}`
   }
 }
