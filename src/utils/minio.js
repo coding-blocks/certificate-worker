@@ -3,8 +3,8 @@ const config = require('../config')
 
 var minioClient = new Minio.Client({
   endPoint: config.minio.url,
-//   port: 443,
-  useSSL: false,
+  port: 443,
+  useSSL: true,
   accessKey: config.minio.accessKey,
   secretKey: config.minio.secretKey
 });
