@@ -18,6 +18,17 @@ Handlebars.registerHelper('eq', (a,b) => {
 
 module.exports = {
   GenerateFromTemplate: app => async ({ data, callback }) => {
+    const { bucketName } = await app.mongo.db
+    .collection('clients')
+    .findOne({
+      name: data.clientName
+    })
+    if(!bucketName) {
+      throw {
+        statusCode: 400,
+        message: 'Client Name missing'
+      }
+    }
     data.salt = v4().slice(-4)
     data.run.startString =  moment.unix(data.run.start).format("MMM YYYY")
     data.run.endString = moment.unix(data.run.end).format("MMM YYYY")
@@ -54,13 +65,13 @@ module.exports = {
 
     // 2. Upload to minio
     const destKeyName = `${v4()}.pdf`
-    await uploadToMinio(outPath, destKeyName)
+    await uploadToMinio(bucketName, outPath, destKeyName)
 
     // 3. Send event via webhook
     await U.sendCallback(callback, {
       secret: config.appSecret,
       certificateId: data.certificateId,
-      url: linkForKey(destKeyName),
+      url: linkForKey(bucketName, destKeyName),
       salt: data.salt
     }, method='patch')
 
@@ -68,6 +79,18 @@ module.exports = {
     fs.unlinkSync(outPath)
   },
   GenerateFromLayout: app => async data => {
+    const { bucketName } = await app.mongo.db
+    .collection('clients')
+    .findOne({
+      name: data.clientName
+    })
+    if(!bucketName) {
+      throw {
+        statusCode: 400,
+        message: 'Client Not Found'
+      }
+    }
+
     const layout = await app.mongo.db
       .collection('layouts')
       .findOne({
@@ -90,10 +113,10 @@ module.exports = {
     const html = template(document.context);
     await pdf.createPdf(html, document.options);
     const destKeyName = `${v4()}.pdf`
-    await uploadToMinio(outPath, destKeyName)
+    await uploadToMinio(bucketName, outPath, destKeyName)
 
     await U.sendCallback(data.callback, {
-      url: linkForKey(destKeyName),
+      url: linkForKey(bucketName, destKeyName),
     })
   }
 }

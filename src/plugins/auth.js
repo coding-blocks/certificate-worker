@@ -6,7 +6,7 @@ module.exports = fp(async (app, opts) => {
   app.decorate('verifyBearerToken', async (request, reply) => {
     const [type, token] = parseAuthHeader(request.headers)
     const val = await app.mongo.db
-      .collection('tokens')
+      .collection('clients')
       .findOne({
         token
       })
@@ -16,6 +16,7 @@ module.exports = fp(async (app, opts) => {
         message: 'Unauthorized'
       }
     }
+    request.body.client = val
   })
   app.decorate('verifyJwt', async (request, reply) => {
     const [type, token] = parseAuthHeader(request.headers)

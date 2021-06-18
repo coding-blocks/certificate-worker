@@ -23,7 +23,6 @@ module.exports = {
   },
   minio: {
     url: process.env.monioUrl || "minio.codingblocks.com",
-    bucketName: process.env.minioBucketName || "bucket",
     accessKey: process.env.minioAccessKey || "bleh",
     secretKey: process.env.minioSecretKey || "WontWork"
   },

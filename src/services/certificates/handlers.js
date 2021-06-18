@@ -22,7 +22,8 @@ module.exports = {
       version: 2,
       substitutions: request.body.substitutions,
       layoutId: request.body.layoutId,
-      callback: request.body.callback
+      callback: request.body.callback,
+      clientName: request.body.client.name
     }
 
     app.amqpChannel.sendToQueue(config.amqp.queuename, (new Buffer(JSON.stringify(payload))))
@@ -60,8 +61,8 @@ module.exports = {
     const template = Handlebars.compile(document.template);
     const html = template(document.context);
     await pdf.createPdf(html, document.options);
-    await uploadToMinio(outPath, destKeyName)
-    const url = linkForKey(destKeyName)
+    await uploadToMinio(request.body.client.bucketName, outPath, destKeyName)
+    const url = linkForKey(request.body.client.bucketName, destKeyName)
 
     return {
       url
