@@ -96,6 +96,8 @@ module.exports = {
       .findOne({
         _id: app.transformStringIntoObjectId(data.layoutId)
       })
+    data.substitutions.run.startString =  moment.unix(data.substitutions.run.start).format("MMM YYYY")
+    data.substitutions.run.endString = moment.unix(data.substitutions.run.end).format("MMM YYYY")
 
     const outPath = path.join(__dirname, '../../certification/' + v4() + ".pdf")
     const document = {
