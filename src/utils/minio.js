@@ -12,7 +12,7 @@ var minioClient = new Minio.Client({
 module.exports = {
   uploadToMinio (bucketName, filePath, destKeyName) {
     return new Promise( (resolve, reject) => {
-      minioClient.fPutObject(bucketName, destKeyName, filePath, (err, etag) => {
+      minioClient.fPutObject(bucketName, destKeyName, filePath, {'Content-Type': 'application/pdf'}, (err, etag) => {
         if (err) return reject(err)
         resolve(etag)
       })
