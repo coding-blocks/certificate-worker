@@ -1,4 +1,4 @@
-FROM node:12.16.3-alpine
+FROM node:14-alpine
 
 # Add support for https on wget
 RUN apk update && apk add --no-cache wget && apk --no-cache add openssl wget && apk add ca-certificates && update-ca-certificates
