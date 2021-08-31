@@ -33,8 +33,8 @@ module.exports = {
     data.run.startString =  moment.unix(data.run.start).format("MMM YYYY")
     data.run.endString = moment.unix(data.run.end).format("MMM YYYY")
 
-    data.user.firstname = data.user.firstname.toLowerCase()
-    data.user.lastname = data.user.lastname.toLowerCase()
+    data.user.firstname = data.user?.firstname?.toLowerCase()
+    data.user.lastname = data.user?.lastname?.toLowerCase()
     
     // 1. generate html
     const outPath = path.join(__dirname, '../../certification/' + v4() + ".pdf")
