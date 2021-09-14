@@ -4,9 +4,9 @@ module.exports = {
     user: process.env.login || "amoeba",
     password: process.env.password || "123456",
     port: process.env.port || "5672",
-    queuename: process.env.queuename || 'certificate-queue'
+    queuename: process.env.queuename || 'amoeba-certificate'
   },
-  appSecret: process.env.appSecret || "" ,
+  appSecret: process.env.appSecret || "trainz" ,
   db: {
     url: process.env.DB_URL || 'mongodb://localhost/certificates'
   },

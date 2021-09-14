@@ -2,6 +2,7 @@ const fp = require('fastify-plugin');
 const handlers = require('./handlers');
 const config = require('../../config');
 const Raven = require('raven');
+const U = require('./utils');
 
 module.exports = fp((app, opts, next) => {
   const channel = app.amqpChannel
@@ -17,6 +18,11 @@ module.exports = fp((app, opts, next) => {
     await handler(data)
       .catch(err => {
         console.log(err)
+        U.sendCallback(data.callback, {
+          secret: config.appSecret,
+          certificateId: data.data.certificateId,
+          error: err
+        }, method = 'patch')
         Raven.captureException(err)
       })
       
