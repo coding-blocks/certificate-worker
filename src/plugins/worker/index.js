@@ -18,11 +18,6 @@ module.exports = fp((app, opts, next) => {
     await handler(data)
       .catch(err => {
         console.log(err)
-        U.sendCallback(data.callback, {
-          secret: config.appSecret,
-          certificateId: data.data.certificateId,
-          error: err
-        }, method = 'patch')
         Raven.captureException(err)
       })
       
