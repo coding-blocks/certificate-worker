@@ -8,6 +8,7 @@ const config = require('../../config');
 const pdf = require('../../utils/pdf');
 const U = require('./utils');
 const Raven = require('raven')
+const shell = require('shelljs')
 
 // set default timezone
 moment.tz.setDefault('Asia/Kolkata');
@@ -68,6 +69,7 @@ module.exports = {
       // 2. Upload to minio
       const destKeyName = `${v4()}.pdf`
       await uploadToMinio(bucketName, outPath, destKeyName)
+      await shell.rm('-rf', outPath)
 
       // 3. Send event via webhook
       await U.sendCallback(callback, {
@@ -125,6 +127,7 @@ module.exports = {
       await pdf.createPdf(html, document.options);
       const destKeyName = `${v4()}.pdf`
       await uploadToMinio(bucketName, outPath, destKeyName)
+      await shell.rm('-rf', outPath)
 
       await U.sendCallback(data.callback, {
         url: linkForKey(bucketName, destKeyName),
