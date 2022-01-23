@@ -7,6 +7,7 @@ const { uploadToMinio, linkForKey } = require('../../utils/minio');
 const config = require('../../config');
 const pdf = require('../../utils/pdf');
 const U = require('./utils');
+const Raven = require('raven')
 
 // set default timezone
 moment.tz.setDefault('Asia/Kolkata');
@@ -129,6 +130,7 @@ module.exports = {
         url: linkForKey(bucketName, destKeyName),
       })
     } catch(err) {
+      Raven.captureException(err)
       U.sendCallback(data.callback, {
         secret: config.appSecret,
         certificateId: data.certificateId,
