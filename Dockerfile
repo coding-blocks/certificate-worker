@@ -22,7 +22,7 @@ RUN yarn install --pure-lockfile
 RUN apk add bash
 COPY start.sh /bin/start.sh
 COPY wait-for-it.sh /bin/wait-for-it.sh
-COPY nginx.conf /etc/nginx/conf.d/certificate.conf
+COPY nginx.conf /etc/nginx/http.d/certificate.conf
 RUN mkdir -p /run/nginx
 COPY src ./src
 RUN mkdir -p src/certification
