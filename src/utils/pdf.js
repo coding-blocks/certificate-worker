@@ -13,7 +13,7 @@ module.exports = {
 
             await page.setContent(html, {
                 waitUntil: 'networkidle2',
-                timeout: 60000
+                timeout: 90000
             });
             await page.emulateMedia('screen');
 
@@ -25,6 +25,7 @@ module.exports = {
 	    }
 	    catch(err) {
             console.log(err);
+            throw err
 	    }
 	}
 
