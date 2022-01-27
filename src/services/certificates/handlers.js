@@ -26,7 +26,7 @@ module.exports = {
       clientName: request.body.client.name
     }
 
-    app.amqpChannel.sendToQueue(config.amqp.queuename, (new Buffer(JSON.stringify(payload))))
+    app.amqpChannel.sendToQueue(config.amqp.queuename, (new Buffer.from(JSON.stringify(payload))))
 
     reply.code(204)
   },
