@@ -80,6 +80,7 @@ module.exports = {
       // 4. Cleanup
       fs.unlinkSync(outPath)
     } catch(err) {
+      console.log('certificateTemplate: ', data.template)
       U.sendCallback(callback, {
         secret: config.appSecret,
         certificateId: data.certificateId,
@@ -131,6 +132,7 @@ module.exports = {
         url: linkForKey(bucketName, destKeyName),
       })
     } catch(err) {
+      console.log('certificateLayout: ',data.layoutId)
       Raven.captureException(err)
       U.sendCallback(data.callback, {
         secret: config.appSecret,
