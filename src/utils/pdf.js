@@ -24,7 +24,6 @@ module.exports = {
             await browser.close();
 	    }
 	    catch(err) {
-            console.log(err);
             throw err
 	    }
 	}
