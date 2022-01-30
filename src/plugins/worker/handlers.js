@@ -20,6 +20,8 @@ Handlebars.registerHelper('eq', (a,b) => {
 module.exports = {
   GenerateFromTemplate: app => async ({ data, callback }) => {
     try {
+      console.log('certificateTemplate: ', data.template)
+      
       const { bucketName } = await app.mongo.db
       .collection('clients')
       .findOne({
@@ -90,6 +92,8 @@ module.exports = {
   },
   GenerateFromLayout: app => async data => {
     try {
+      console.log('certificateLayout: ',data.layoutId)
+
       const { bucketName } = await app.mongo.db
       .collection('clients')
       .findOne({
