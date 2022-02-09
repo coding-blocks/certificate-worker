@@ -15,7 +15,7 @@ module.exports = {
                 waitUntil: 'networkidle2',
                 timeout: 30000
             });
-            await page.emulateMedia('screen');
+            await page.emulateMediaType('screen');
 
             await page.pdf({
                 pageRanges: '1',
