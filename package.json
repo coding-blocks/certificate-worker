@@ -33,7 +33,7 @@
     "mongod": "^2.0.0",
     "needle": "^2.2.2",
     "phantomjs-prebuilt": "^2.1.16",
-    "puppeteer": "^3.1.0",
+    "puppeteer": "^13.3.0",
     "raven": "^2.6.4",
     "react-infinite-scroller": "^1.2.4",
     "react-modal": "^3.11.2",
