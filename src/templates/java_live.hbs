@@ -107,7 +107,7 @@
         </div>
         <div class="certificate-lite__right-section__signature-row row no-gutters align-items-end">
           <div>
-            <div class="duration">{{data.run.startString}} - {{data.run.endString}}</div>
+            <div class="duration">{{data.startString}} - {{data.endString}}</div>
             <div class="signature-divider"></div>
             <div class="font-xl">Date</div>
           </div>
@@ -120,8 +120,8 @@
         </div>
         <div style="margin-top: 25px">
           The certificate can be verified at 
-          <a href="https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}">
-            https://online.codingblocks.com/certificates/CBOL-{{data.runAttempt.id}}-{{data.salt}}
+          <a href="{{data.publicLink}}">
+            {{data.publicLink}}
           </a>
         </div>
       </div>
