@@ -12,13 +12,13 @@ module.exports = {
             const page = await browser.newPage();
 
             await page.setContent(html, {
-                waitUntil: 'networkidle2',
-                timeout: 30000
+                waitUntil: 'domcontentloaded'
             });
             await page.emulateMediaType('screen');
 
             await page.pdf({
                 pageRanges: '1',
+                printBackground: true,
                 ...options
             });
             await browser.close();
