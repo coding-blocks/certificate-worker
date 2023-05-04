@@ -12,7 +12,7 @@ module.exports = {
             const page = await browser.newPage();
 
             await page.setContent(html, {
-                waitUntil: 'networkidle0',
+                waitUntil: 'networkidle2',
                 timeout: 30000
             });
             await page.emulateMediaType('screen');
