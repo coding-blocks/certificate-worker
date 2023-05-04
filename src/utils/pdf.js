@@ -12,7 +12,8 @@ module.exports = {
             const page = await browser.newPage();
 
             await page.setContent(html, {
-                waitUntil: 'domcontentloaded'
+                waitUntil: 'domcontentloaded',
+                timeout: 30000
             });
             await page.emulateMediaType('screen');
 
