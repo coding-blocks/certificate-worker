@@ -29,6 +29,7 @@
     "fastify-static": "^2.7.0",
     "handlebars-pdf": "^1.0.1",
     "html-pdf": "^3.0.1",
+    "html-pdf-node": "^1.0.8",
     "jsonwebtoken": "^8.5.1",
     "minio": "^7.0.0",
     "moment-timezone": "^0.5.26",
