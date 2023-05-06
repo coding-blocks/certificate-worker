@@ -9,6 +9,7 @@ const app = Fastify({
 })
 
 app
+  .register(require('@fastify/formbody'))
   .register(require('fastify-mongodb'), {
     url: config.db.url,
     forceClose: true

@@ -12,7 +12,8 @@ export default props => {
     content: layout.content,
     params: layout.params,
     height: layout.height || 408,
-    width: layout.width || 842
+    width: layout.width || 842,
+    useHtmlPdf: !!layout.useHtmlPdf
   })
   const [loading, setLoading] = React.useState(false)
 
@@ -47,34 +48,42 @@ export default props => {
       <GenerateNowModal isOpen={isModalOpen} closeModal={closeModal} layout={layout} />
       <div className='container'>
         <div className='row'>
-          <div className='d-flex pl-0 col-12 col-md-5 input-group align-items-center'>
+          <div className='d-flex pl-0 input-group align-items-center'>
+
             <label>Template Name: </label>
             <input
-              className='input-text col-lg-4'
+              className='input-text'
               value={editingLayout.name}
               onChange={e => setEditingLayout({ ...editingLayout, name: e.target.value })}
             />
             <label className='ml-2'>Width:&nbsp;</label>
             <input
-              className='input-text col-lg-2'
+              className='input-text'
               type='number'
               value={editingLayout.width}
               onChange={e => setEditingLayout({ ...editingLayout, width: e.target.value })}
             />
             <label className='ml-2'>Height:&nbsp;</label>
             <input
-              className='input-text col-lg-2'
+              className='input-text'
               type='number'
               value={editingLayout.height}
               onChange={e => setEditingLayout({ ...editingLayout, height: e.target.value })}
             />
+            <label className='ml-2'>Use HTML-PDF:&nbsp;</label>
+            <input
+              className=''
+              type='checkbox'
+              checked={editingLayout.useHtmlPdf}
+              onChange={e => setEditingLayout({ ...editingLayout, useHtmlPdf: !editingLayout.useHtmlPdf })}
+            />
           </div>
-          <div className='d-flex col-12 col-md-4 col-lg-1 justify-content-center'>
+          <div className='d-flex justify-content-center mx-3'>
             <button className='button-solid' disabled={loading} onClick={saveLayout}>
               {loading ? 'Saving' : 'Save'}
             </button>
           </div>
-          <div className='d-flex col-12 col-md-4 col-lg-1 justify-content-center'>
+          <div className='d-flex justify-content-center'>
             <button className='button-solid' disabled={loading} onClick={openModal}>
               Generate Certificate
             </button>

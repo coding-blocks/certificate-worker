@@ -6,6 +6,7 @@ const Handlebars = require('handlebars');
 const { uploadToMinio, linkForKey } = require('../../utils/minio');
 const config = require('../../config');
 const pdf = require('../../utils/pdf');
+const pdfv2 = require('../../utils/pdf-v2');
 const U = require('./utils');
 const Raven = require('raven')
 
@@ -63,7 +64,11 @@ module.exports = {
       html = html.replace(/(?:\<style\>)/, base + '<style>');
 
       //sending html and pdf option to puppeteer
-      await pdf.createPdf(html, document.options);
+      if(layout.useHtmlPdf) {
+        await pdfv2.createPdf(html, document.options)
+      } else {
+        await pdf.createPdf(html, document.options);
+      }
 
       // 2. Upload to minio
       const destKeyName = `${v4()}.pdf`
@@ -123,7 +128,11 @@ module.exports = {
 
       const template = Handlebars.compile(document.template);
       const html = template(document.context);
-      await pdf.createPdf(html, document.options);
+      if(layout.useHtmlPdf) {
+        await pdfv2.createPdf(html, document.options)
+      } else {
+        await pdf.createPdf(html, document.options);
+      }
       const destKeyName = `${v4()}.pdf`
       await uploadToMinio(bucketName, outPath, destKeyName)
       fs.unlinkSync(outPath)

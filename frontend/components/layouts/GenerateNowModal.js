@@ -67,7 +67,7 @@ const QueryModal = (props) => {
                     </div>
                 })}
 
-                <div className="button-solid white mt-3">
+                {/* <div className="button-solid white mt-3">
                     <button 
                         type="submit" 
                         onClick={submitDetails}
@@ -75,7 +75,12 @@ const QueryModal = (props) => {
                     >
                         {loading ? 'Generating' : 'Submit'}
                     </button>
-                </div>
+                </div> */}
+                {/* <a href={`/api/certificates/generate?layoutId=${layout._id}`}>Download</a> */}
+                <form action={'https://certification.codingblocks.com/api/certificates-download'}  method="POST">
+                    <input type="hidden" name="layoutId" value={layout._id}></input>
+                    <button className="button-solid white mt-3" type="submit">Download</button>
+                </form>
 
                 <div>
                     {certificateUrl && <a className="red mt-3" href={certificateUrl}>{certificateUrl}</a>}
