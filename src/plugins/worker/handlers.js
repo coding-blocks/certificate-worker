@@ -64,11 +64,7 @@ module.exports = {
       html = html.replace(/(?:\<style\>)/, base + '<style>');
 
       //sending html and pdf option to puppeteer
-      if(layout.useHtmlPdf) {
-        await pdfv2.createPdf(html, document.options)
-      } else {
-        await pdf.createPdf(html, document.options);
-      }
+      await pdf.createPdf(html, document.options);
 
       // 2. Upload to minio
       const destKeyName = `${v4()}.pdf`
