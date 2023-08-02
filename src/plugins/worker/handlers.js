@@ -125,7 +125,7 @@ module.exports = {
       const template = Handlebars.compile(document.template);
       const html = template(document.context);
       if(layout.useHtmlPdf) {
-        await pdfv2.createPdf(html, document.options)
+        await pdfv2.createPdfv2(html, document.options)
       } else {
         await pdf.createPdf(html, document.options);
       }
