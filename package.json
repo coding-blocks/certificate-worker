@@ -32,7 +32,7 @@
     "html-pdf-node": "^1.0.8",
     "jsonwebtoken": "^8.5.1",
     "minio": "^7.0.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "mongod": "^2.0.0",
     "needle": "^2.2.2",
     "puppeteer": "^13.3.0",
